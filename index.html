@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل السلامة الغذائية في المطاعم الجامعية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: app shell — sticky header, content column ≤ 980px, bottom tab bar on phones */
+  --bg:#f3f6f4; --surface:#ffffff; --surface-2:#e9efeb; --line:#d5ded8;
+  --ink:#13261d; --muted:#5a6d63;
+  --brand:#0b6b45; --brand-ink:#ffffff; --brand-soft:#dcefe5;
+  --stamp:#c8313b; --stamp-soft:#fbe5e6;
+  --ok:#17803d; --ok-soft:#e1f4e7; --warn:#b26a00; --warn-soft:#fdf0d9; --bad:#c8313b; --bad-soft:#fbe5e6;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --r:14px; --shadow:0 1px 2px rgba(10,40,25,.06),0 6px 20px rgba(10,40,25,.06);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1612; --surface:#15211b; --surface-2:#1c2b23; --line:#2a3b32;
+    --ink:#e6efe9; --muted:#9db0a5;
+    --brand:#3fbf86; --brand-ink:#04140c; --brand-soft:#173a2a;
+    --stamp:#ff7078; --stamp-soft:#3a1d20;
+    --ok:#4fd27d; --ok-soft:#173a24; --warn:#f0b04a; --warn-soft:#3a2c14; --bad:#ff7078; --bad-soft:#3a1d20;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1612; --surface:#15211b; --surface-2:#1c2b23; --line:#2a3b32;
+  --ink:#e6efe9; --muted:#9db0a5;
+  --brand:#3fbf86; --brand-ink:#04140c; --brand-soft:#173a2a;
+  --stamp:#ff7078; --stamp-soft:#3a1d20;
+  --ok:#4fd27d; --ok-soft:#173a24; --warn:#f0b04a; --warn-soft:#3a2c14; --bad:#ff7078; --bad-soft:#3a1d20;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.35;text-wrap:balance;margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:6px}
+a{color:var(--brand)}
+.num{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--brand);color:var(--brand-ink)}
+.top-in{max-width:980px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.logo{width:38px;height:38px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;flex:none;opacity:.95}
+.top h1{font-size:16px;font-weight:600}
+.top small{display:block;font-family:var(--f-body);font-size:12px;opacity:.85;font-weight:400}
+.top .sp{flex:1}
+.icon-btn{background:transparent;border:0;color:inherit;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;cursor:pointer}
+.icon-btn:hover{background:rgba(255,255,255,.14)}
+.desk-nav{display:none;gap:4px}
+.desk-nav a{color:inherit;text-decoration:none;padding:6px 12px;border-radius:999px;font-size:14px;font-weight:500;opacity:.88}
+.desk-nav a[aria-current="page"]{background:rgba(255,255,255,.2);opacity:1}
+@media (min-width:860px){.desk-nav{display:flex}.tabbar{display:none!important}body{padding-bottom:24px}}
+
+/* tab bar */
+.tabbar{position:fixed;bottom:0;inset-inline:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:500;padding:4px 0;border-radius:10px}
+.tabbar a svg{width:22px;height:22px}
+.tabbar a[aria-current="page"]{color:var(--brand)}
+.tabbar a[aria-current="page"] svg{stroke-width:2.2}
+
+main{max-width:980px;margin:0 auto;padding:18px 16px 24px}
+.view{display:none}
+.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* generic */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.eyebrow{font-size:12.5px;font-weight:600;color:var(--brand);letter-spacing:0}
+.sec-title{font-size:20px;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:500;font-size:14.5px;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:var(--brand)}
+.btn.primary{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.btn.small{padding:5px 10px;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.info{background:var(--brand-soft);color:var(--brand)}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:13.5px;font-weight:500;color:var(--muted)}
+.inp{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 12px;min-height:42px;width:100%}
+.inp:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px var(--brand-soft)}
+
+/* home */
+.hero{background:linear-gradient(160deg,var(--brand) 0%,color-mix(in srgb,var(--brand) 70%,#000) 100%);color:var(--brand-ink);border-radius:20px;padding:22px 20px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset-inline-start:-40px;bottom:-60px;width:200px;height:200px;border-radius:50%;border:18px solid rgba(255,255,255,.08)}
+.hero .eb{font-size:13px;opacity:.9}
+.hero h2{font-size:24px;margin:6px 0 8px}
+.hero p{margin:0 0 14px;opacity:.92;max-width:58ch;font-size:15px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px}
+.hero .chip{background:rgba(255,255,255,.16);border-radius:999px;padding:4px 12px;font-size:12.5px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi b{font-family:var(--f-display);font-size:24px;color:var(--brand);display:block;line-height:1.2}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.progress{height:8px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--brand);border-radius:999px;transition:width .4s}
+
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.ch-card{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.ch-card:hover{border-color:var(--brand);transform:translateY(-1px)}
+.ch-ic{width:42px;height:42px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
+.ch-ic svg{width:22px;height:22px}
+.ch-card h3{font-size:15.5px;font-weight:600}
+.ch-card p{margin:2px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
+.ch-card .done{margin-inline-start:auto;color:var(--ok);flex:none}
+
+.quick{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.quick a{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:6px}
+.quick a:hover{border-color:var(--brand)}
+.quick b{font-family:var(--f-display);font-size:20px;color:var(--brand)}
+.quick span{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* reader */
+.reader-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.reader-head .ch-ic{width:52px;height:52px}
+.reader-head h2{font-size:22px}
+.prose{max-width:70ch}
+.prose h3{font-size:17px;margin:22px 0 8px;color:var(--brand);display:flex;gap:8px;align-items:baseline}
+.prose h3 .n{font-family:var(--f-body);font-size:13px;background:var(--brand-soft);color:var(--brand);border-radius:6px;padding:0 7px;font-weight:600}
+.prose h4{font-size:15.5px;margin:16px 0 6px}
+.prose p{margin:0 0 10px}
+.prose ul{margin:0 0 12px;padding-inline-start:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.prose ul li{position:relative;padding-inline-start:20px}
+.prose ul li::before{content:"";position:absolute;inset-inline-start:2px;top:.75em;width:7px;height:7px;border-radius:2px;background:var(--brand);transform:rotate(45deg)}
+.note{border-inline-start:4px solid var(--stamp);background:var(--stamp-soft);border-radius:10px;padding:12px 14px;margin:12px 0}
+.note b{color:var(--stamp)}
+.tip{border-inline-start:4px solid var(--brand);background:var(--brand-soft);border-radius:10px;padding:12px 14px;margin:12px 0}
+.tbl-wrap{overflow-x:auto;margin:8px 0 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:420px}
+caption{caption-side:top;text-align:start;font-weight:600;padding:10px 12px;font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+th,td{padding:9px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface-2);font-weight:600;font-size:13.5px}
+tr:last-child td{border-bottom:0}
+td.t{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;direction:ltr;text-align:right}
+.swatch{display:inline-block;width:18px;height:18px;border-radius:5px;vertical-align:middle;margin-inline-end:8px;border:1px solid rgba(0,0,0,.12)}
+.reader-foot{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+.toc{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.toc a{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.toc a:hover{border-color:var(--brand)}
+
+/* tools */
+.tool-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px;scrollbar-width:thin}
+.tool-tabs button{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:14px;font-weight:500;display:flex;gap:6px;align-items:center}
+.tool-tabs button[aria-selected="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.tool{display:none}
+.tool.on{display:block}
+.verdict{border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:center;font-weight:600}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}
+.verdict.bad{background:var(--bad-soft);color:var(--bad)}
+.verdict.warn{background:var(--warn-soft);color:var(--warn)}
+.verdict.info{background:var(--surface-2);color:var(--ink)}
+.verdict small{display:block;font-weight:400;color:var(--ink);opacity:.85}
+.thermo{display:flex;align-items:center;gap:14px}
+.thermo input[type=range]{flex:1;accent-color:var(--brand);height:28px}
+.thermo .big{font-family:var(--f-display);font-size:30px;min-width:96px;text-align:center;direction:ltr}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.boards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+@media (max-width:560px){.boards{grid-template-columns:repeat(3,1fr)}}
+.board{border:2px solid transparent;border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;background:var(--surface-2);font-size:13px;font-weight:600}
+.board .pl{height:46px;border-radius:8px;margin-bottom:6px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.12)}
+.board[aria-pressed="true"]{border-color:var(--ink)}
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:12px}
+.tl{display:flex;gap:12px;align-items:flex-start;padding:8px 0;position:relative}
+.tl .dot{width:14px;height:14px;border-radius:50%;background:var(--brand);margin-top:6px;flex:none;box-shadow:0 0 0 4px var(--brand-soft)}
+.tl.end .dot{background:var(--stamp);box-shadow:0 0 0 4px var(--stamp-soft)}
+.check-list{display:flex;flex-direction:column;gap:8px}
+.chk-row{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;flex-wrap:wrap}
+.chk-row .lbl{flex:1;min-width:150px}
+.chk-row .lbl b{display:block;font-size:15px}
+.chk-row .lbl span{font-size:12.5px;color:var(--muted)}
+.ticks{display:flex;gap:6px}
+.tick{width:34px;height:34px;border-radius:9px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;display:grid;place-items:center;color:transparent}
+.tick[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
+.counter{display:flex;align-items:center;gap:6px}
+.counter b{min-width:28px;text-align:center;font-family:var(--f-display);font-size:18px}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;align-items:flex-start}
+.step::before{counter-increment:s;content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--stamp-soft);color:var(--stamp);font-weight:700;display:grid;place-items:center;flex:none;font-family:var(--f-display)}
+.step.done::before{content:"✓";background:var(--ok);color:#fff}
+.step.done{opacity:.75}
+.step p{margin:0}
+
+/* forms */
+.form-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.form-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:8px}
+.form-item h3{font-size:15px}
+.form-item p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.6}
+.form-item .row{margin-top:auto}
+.rate-sec{margin-bottom:12px}
+.rate-sec h3{font-size:16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rate-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line);flex-wrap:wrap}
+.rate-row:last-child{border-bottom:0}
+.rate-row .lbl{flex:1;min-width:140px;font-size:14.5px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:var(--surface);padding:6px 12px;cursor:pointer;font-size:13.5px;font-weight:500;border-inline-start:1px solid var(--line)}
+.seg button:first-child{border-inline-start:0}
+.seg button[aria-pressed="true"][data-v="2"]{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"][data-v="1"]{background:var(--warn);color:#fff}
+.seg button[aria-pressed="true"][data-v="0"]{background:var(--bad);color:#fff}
+.tbl-wrap .seg button{padding:5px 8px;font-size:12.5px}
+.score{display:flex;gap:16px;align-items:center}
+.ring{width:84px;height:84px;flex:none}
+.ring text{font-family:var(--f-display);font-weight:700;fill:var(--ink)}
+.entries{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.entry{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--surface-2);border-radius:10px;padding:8px 12px;font-size:14px;flex-wrap:wrap}
+.fridge-grid{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.fridge-grid table{min-width:760px;font-size:12px}
+.fridge-grid th,.fridge-grid td{padding:5px 4px;text-align:center;border-inline-start:1px solid var(--line)}
+.fridge-grid td.dev{background:var(--bad-soft);color:var(--bad);font-weight:700;border-radius:50%}
+.fridge-grid td.okc{color:var(--ok);font-weight:600}
+.fridge-grid td.today{outline:2px solid var(--brand);outline-offset:-2px}
+
+/* quiz */
+.q-card{max-width:640px}
+.q-opts{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.q-opt{text-align:start;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;cursor:pointer;font-size:15px}
+.q-opt:hover:not(:disabled){border-color:var(--brand)}
+.q-opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.q-opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.q-opt:disabled{cursor:default}
+.q-dots{display:flex;gap:4px;flex-wrap:wrap}
+.q-dots i{width:22px;height:6px;border-radius:999px;background:var(--surface-2)}
+.q-dots i.r{background:var(--ok)}.q-dots i.w{background:var(--bad)}.q-dots i.c{background:var(--brand)}
+
+/* search */
+.search-panel{position:fixed;inset:0;z-index:50;background:color-mix(in srgb,var(--bg) 96%,transparent);display:none;flex-direction:column}
+.search-panel.on{display:flex}
+.search-bar{max-width:980px;width:100%;margin:0 auto;padding:12px 16px;display:flex;gap:8px}
+.search-res{max-width:980px;width:100%;margin:0 auto;padding:0 16px 30px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.hit{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;text-decoration:none;color:var(--ink)}
+.hit:hover{border-color:var(--brand)}
+.hit small{color:var(--brand);font-weight:600}
+.hit p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+mark{background:var(--warn-soft);color:inherit;border-radius:3px;padding:0 2px}
+
+.toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:999px;font-size:14px;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.copybox{width:100%;min-height:140px;margin-top:10px;display:none}
+.copybox.on{display:block}
+footer.src{max-width:980px;margin:0 auto;padding:0 16px 20px;font-size:12.5px;color:var(--muted)}
+.dl-btn{display:inline-flex;align-items:center;gap:6px;background:var(--brand-ink);color:var(--brand);border:0;border-radius:999px;padding:7px 14px;font-weight:600;font-size:13.5px;cursor:pointer;flex:none;text-decoration:none}
+.dl-btn:hover{opacity:.9}
+@media (max-width:420px){.dl-btn span{display:none}.dl-btn{padding:8px}}
+.org{max-width:980px;margin:0 auto;padding:14px 16px 22px;text-align:center;border-top:1px solid var(--line);font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--brand)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="logo" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+    <div>
+      <h1>دليل السلامة الغذائية</h1>
+      <small>المطاعم الجامعية · الديوان الوطني للخدمات الجامعية</small>
+    </div>
+    <div class="sp"></div>
+    <nav class="desk-nav" aria-label="التنقل الرئيسي">
+      <a href="#home" data-nav="home">الرئيسية</a>
+      <a href="#guide" data-nav="guide">الدليل</a>
+      <a href="#tools" data-nav="tools">الأدوات</a>
+      <a href="#forms" data-nav="forms">البطاقات</a>
+      <a href="#quiz" data-nav="quiz">اختبر نفسك</a>
+    </nav>
+    <button class="dl-btn" id="dlApp" aria-label="تحميل التطبيق">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+      <span>تحميل التطبيق</span>
+    </button>
+    <button class="icon-btn" id="openSearch" aria-label="بحث في الدليل">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="view" id="v-home" aria-label="الرئيسية">
+    <div class="hero">
+      <div class="eb">الدليل الإجرائي · وفقاً للقرار الوزاري المشترك المؤرخ في 07 ماي 2025</div>
+      <h2>كل ما يلزم لوجبة آمنة، من الاستقبال إلى الطبق</h2>
+      <p>اثنا عشر فصلاً من الدليل، ودرجات الحرارة الحرجة، وأدوات تحقق فورية، والبطاقات الموحدة جاهزة للتعبئة على الهاتف.</p>
+      <div class="meta"><span class="chip">نظام HACCP</span><span class="chip">ديسمبر 2025</span><span class="chip">ملزم لكل منشآت الإطعام</span></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="row" style="justify-content:space-between">
+        <div><div class="eyebrow">تقدّمك في القراءة</div><b id="progTxt" class="num">0 من 14 قسماً</b></div>
+        <a class="btn small primary" id="continueBtn" href="#intro">تابع القراءة</a>
+      </div>
+      <div class="progress" style="margin-top:10px"><i id="progBar" style="width:0%"></i></div>
+    </div>
+
+    <h2 class="sec-title">أرقام يجب حفظها</h2>
+    <div class="quick">
+      <a href="#c4"><b class="num">+74°</b><span>أدنى حرارة لطهي الدواجن والأطباق المسخنة</span></a>
+      <a href="#c4"><b class="num">+63°</b><span>أدنى حرارة للحوم الحمراء والأسماك والبيض والحفظ الساخن</span></a>
+      <a href="#c3"><b class="num">0° → +4°</b><span>المنتجات المبردة عند الاستقبال</span></a>
+      <a href="#c5"><b class="num">150 غ · 5 أيام</b><span>عينة الطبق الشاهد ومدة حفظها</span></a>
+      <a href="#c4"><b class="num">+10° / 2 سا</b><span>التبريد السريع بعد نهاية الطهي</span></a>
+      <a href="#c3"><b class="num">≤ −18°</b><span>تخزين الدواجن والمنتجات المجمدة</span></a>
+    </div>
+
+    <h2 class="sec-title">فصول الدليل</h2>
+    <div class="ch-grid" id="homeChapters"></div>
+  </section>
+
+  <!-- GUIDE INDEX -->
+  <section class="view" id="v-guide" aria-label="فهرس الدليل">
+    <h2 style="font-size:22px">فهرس الدليل</h2>
+    <p class="muted" style="margin:4px 0 14px">اختر فصلاً لقراءته. يُعلَّم الفصل مقروءاً عند فتحه.</p>
+    <div class="ch-grid" id="guideChapters"></div>
+  </section>
+
+  <!-- READER -->
+  <section class="view" id="v-reader" aria-label="قراءة الفصل">
+    <div id="reader"></div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="view" id="v-tools" aria-label="الأدوات">
+    <h2 style="font-size:22px">أدوات التحقق السريع</h2>
+    <p class="muted" style="margin:4px 0 12px">مبنية على جداول الدليل مباشرة. أدخل القيمة واحصل على الحكم فوراً.</p>
+    <div class="tool-tabs" role="tablist" id="toolTabs">
+      <button role="tab" data-tool="store" aria-selected="true">التخزين</button>
+      <button role="tab" data-tool="cook" aria-selected="false">حرارة الطهي</button>
+      <button role="tab" data-tool="time" aria-selected="false">المؤقتات</button>
+      <button role="tab" data-tool="boards" aria-selected="false">ألوان التقطيع</button>
+      <button role="tab" data-tool="clean" aria-selected="false">تنظيف اليوم</button>
+      <button role="tab" data-tool="crisis" aria-selected="false">حالة تسمم</button>
+    </div>
+
+    <!-- storage -->
+    <div class="tool on" id="t-store">
+      <div class="card stack">
+        <div class="grid2">
+          <label class="f" for="stFood">نوع المادة الغذائية
+            <select class="inp" id="stFood"></select>
+          </label>
+          <label class="f" for="stTemp">درجة الحرارة المقاسة (°م)
+            <input class="inp num" id="stTemp" type="number" step="0.5" value="3" inputmode="decimal">
+          </label>
+        </div>
+        <div id="stOut"></div>
+        <div id="stInfo" class="grid2"></div>
+      </div>
+    </div>
+
+    <!-- cooking -->
+    <div class="tool" id="t-cook">
+      <div class="card stack">
+        <label class="f" for="ckFood">نوع الغذاء المطهو
+          <select class="inp" id="ckFood"></select>
+        </label>
+        <div>
+          <label class="f" for="ckTemp">حرارة قلب الغذاء</label>
+          <div class="thermo">
+            <input type="range" id="ckTemp" min="30" max="100" value="70" aria-describedby="ckBig">
+            <div class="big num" id="ckBig">+70°</div>
+          </div>
+        </div>
+        <div id="ckOut"></div>
+        <div class="tip"><b>بعد الطهي:</b> الحفظ الساخن عند +63° فأكثر والاستهلاك في يوم التحضير نفسه، ولا يُعاد تسخين الغذاء أكثر من مرة واحدة. للحفظ البارد: تبريد سريع إلى +10° خلال ساعتين ثم التخزين بين 0° و+4°.</div>
+      </div>
+    </div>
+
+    <!-- timers -->
+    <div class="tool" id="t-time">
+      <div class="card stack">
+        <label class="f" for="tmType">ماذا تريد حسابه؟
+          <select class="inp" id="tmType">
+            <option value="witness">موعد إتلاف عينة الطبق الشاهد (5 أيام = 120 ساعة)</option>
+            <option value="thaw">آخر أجل لاستهلاك الدواجن بعد بداية الإذابة (24 ساعة)</option>
+            <option value="cool">آخر أجل للتبريد السريع إلى +10° (ساعتان)</option>
+          </select>
+        </label>
+        <label class="f" for="tmStart" id="tmStartLbl">وقت أخذ العينة
+          <input class="inp num" id="tmStart" type="datetime-local">
+        </label>
+        <div id="tmOut"></div>
+      </div>
+    </div>
+
+    <!-- boards -->
+    <div class="tool" id="t-boards">
+      <div class="card stack">
+        <p style="margin:0">اختر المادة لترى لون طاولة التقطيع المخصصة لها حسب الجدول (4-1). استعمل أدوات مختلفة (سكاكين، طاولات تقطيع) لكل نوع غذاء.</p>
+        <div class="boards" id="boards"></div>
+        <div id="boardOut"></div>
+      </div>
+    </div>
+
+    <!-- cleaning -->
+    <div class="tool" id="t-clean">
+      <div class="card stack">
+        <div class="row" style="justify-content:space-between">
+          <div><div class="eyebrow">برنامج التنظيف اليومي · الجدول (7-1)</div><b id="cleanDate" class="num"></b></div>
+          <span class="pill info" id="cleanScore">0%</span>
+        </div>
+        <div class="progress"><i id="cleanBar" style="width:0%"></i></div>
+        <div class="check-list" id="cleanList"></div>
+        <div class="row"><button class="btn small" id="cleanReset">تصفير قائمة اليوم</button></div>
+      </div>
+    </div>
+
+    <!-- crisis -->
+    <div class="tool" id="t-crisis">
+      <div class="card stack">
+        <div class="note" style="margin:0"><b>متى يكون التصريح إجبارياً؟</b> عند اكتشاف حالتين (02) على الأقل تناولت نفس الوجبة في نفس المكان والزمان.</div>
+        <p class="muted" style="margin:0">اضغط على كل خطوة عند إنجازها.</p>
+        <div class="steps" id="crisisSteps"></div>
+        <div class="row"><button class="btn small" id="crisisReset">إعادة الخطوات</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="view" id="v-forms" aria-label="البطاقات الموحدة">
+    <h2 style="font-size:22px">النماذج الموحدة والملاحق</h2>
+    <p class="muted" style="margin:4px 0 14px">كل البطاقات قابلة للتعبئة هنا. تُحفظ مسودتك في هذا المتصفح فقط، ويمكنك نسخ التقرير لإرساله أو طباعته.</p>
+    <div id="formsHome">
+      <h3 class="sec-title" style="margin-top:0">بطاقات تفاعلية</h3>
+      <div class="form-list">
+        <div class="form-item"><span class="pill info">تقييم</span><h3>البطاقة التقنية الدورية لمراقبة النظافة والصحة</h3><p>المطبخ، عمال المطبخ، المخازن، غرف التبريد، النادي، الإيواء. يحسب التطبيق نسبة المطابقة ويجمع النقاط السيئة.</p><div class="row"><a class="btn small primary" href="#form-inspect">ابدأ التقييم</a></div></div>
+        <div class="form-item"><span class="pill info">سجل يومي</span><h3>متابعة درجة الحرارة في غرف التبريد</h3><p>قياس صباحي ومسائي لثلاث ثلاجات بدرجات مستهدفة 04 و06 و10. يُحاط كل تجاوز بأكثر من 2° تلقائياً.</p><div class="row"><a class="btn small primary" href="#form-fridge">افتح السجل</a></div></div>
+        <div class="form-item"><span class="pill info">سجل</span><h3>بطاقة رقابة زيوت القلي</h3><p>الرائحة والذوق واللون، وقرار الاستبدال مع سببه. يقترح التطبيق الاستبدال عند تغير أي معيار.</p><div class="row"><a class="btn small primary" href="#form-oil">افتح البطاقة</a></div></div>
+        <div class="form-item"><span class="pill info">سجل</span><h3>بطاقة الطبق الشاهد</h3><p>الوجبة، مكوناتها، التاريخ، توقيت أخذ العينة والمسؤول. يحسب موعد انتهاء الحفظ لكل عينة.</p><div class="row"><a class="btn small primary" href="#form-witness">افتح البطاقة</a></div></div>
+        <div class="form-item"><span class="pill info">تقييم شامل</span><h3>البطاقة التقنية الشاملة لمراقبة النظافة والصحة</h3><p>الهياكل، المطابخ، غرف التبريد والمخزن، النادي، الإيواء، المياه والتطهير، النفايات والحيوانات الناقلة للأمراض.</p><div class="row"><a class="btn small primary" href="#form-full">ابدأ التقييم</a></div></div>
+        <div id="logCards" style="display:contents"></div>
+      </div>
+      <h3 class="sec-title">شهادات ووثائق للاحتفاظ بها</h3>
+      <div class="form-list" id="annexList"></div>
+    </div>
+    <div id="formView"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="view" id="v-quiz" aria-label="اختبر نفسك">
+    <h2 style="font-size:22px">اختبر معلوماتك</h2>
+    <p class="muted" style="margin:4px 0 14px">أسئلة من نص الدليل، مفيدة لجلسات التكوين والتوعية الدورية للعمال.</p>
+    <div class="card q-card" id="quizBox"></div>
+  </section>
+</main>
+
+<footer class="src">المصدر: الدليل الإجرائي للسلامة الغذائية في المطاعم الجامعية، الديوان الوطني للخدمات الجامعية، ديسمبر 2025. هذا التطبيق أداة مساعدة ولا يغني عن النص الرسمي.</footer>
+<div class="org">مديرية الخدمات الجامعية قسنطينة - وسط</div>
+
+<nav class="tabbar" aria-label="التنقل">
+  <a href="#home" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>الرئيسية</a>
+  <a href="#guide" data-nav="guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19V5"/><path d="M9 7h6"/></svg>الدليل</a>
+  <a href="#tools" data-nav="tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V4a2 2 0 10-4 0v10.8a4 4 0 104 0z"/></svg>الأدوات</a>
+  <a href="#forms" data-nav="forms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>البطاقات</a>
+  <a href="#quiz" data-nav="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.5-2.5 2-2.5 3.5"/><path d="M12 17h.01"/></svg>اختبار</a>
+</nav>
+
+<div class="search-panel" id="searchPanel" role="dialog" aria-label="بحث">
+  <div class="search-bar">
+    <input class="inp" id="searchInput" type="search" placeholder="ابحث: الدواجن، الطبق الشاهد، النفايات…" aria-label="كلمة البحث">
+    <button class="btn" id="closeSearch">إغلاق</button>
+  </div>
+  <div class="search-res" id="searchRes"></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---------- download app (offline copy) ---------- */
+const APP_HTML='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+document.getElementById('dlApp').addEventListener('click',async()=>{
+  let blob;
+  try{const r=await fetch(location.href.split('#')[0],{cache:'no-store'});if(!r.ok)throw 0;blob=await r.blob();blob=new Blob([blob],{type:'text/html'})}
+  catch(e){blob=new Blob([APP_HTML],{type:'text/html'})}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='دليل-السلامة-الغذائية.html';document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
+  if(typeof toast==='function')toast('جارٍ تحميل التطبيق…');
+});
+/* ---------- storage helpers ---------- */
+const store={get(k,d){try{const v=localStorage.getItem('fsg_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('fsg_'+k,JSON.stringify(v))}catch(e){}}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
+function copyText(t,boxId){
+  const box=boxId&&document.getElementById(boxId);
+  const show=()=>{if(box){box.value=t;box.classList.add('on');box.select()}toast('حدّد النص وانسخه يدوياً')};
+  try{navigator.clipboard.writeText(t).then(()=>toast('تم نسخ التقرير'),show)}catch(e){show()}
+}
+
+/* ---------- icons ---------- */
+const IC={
+ book:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19V5"/>',
+ law:'<path d="M12 3v18M5 21h14"/><path d="M6 7h12"/><path d="M6 7l-3 7a3 3 0 006 0zM18 7l-3 7a3 3 0 006 0z"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+ hand:'<path d="M8 13V5.5a1.5 1.5 0 013 0V11"/><path d="M11 10.5V4.5a1.5 1.5 0 013 0V11"/><path d="M14 10.5V6a1.5 1.5 0 013 0v7c0 4-3 7-6.5 7S5 18 4 15l-1-2.5a1.5 1.5 0 012.6-1.4L8 14"/>',
+ box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
+ flame:'<path d="M12 3c1 4 6 5.5 6 11a6 6 0 01-12 0c0-3 1.5-4.5 3-6 0 2 1 3 2 3 0-3-1-5 1-8z"/>',
+ plate:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/>',
+ bug:'<rect x="8" y="7" width="8" height="12" rx="4"/><path d="M12 7V4M9 4l1.5 3M15 4l-1.5 3M8 11H4M8 15H4M16 11h4M16 15h4"/>',
+ spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>',
+ wrench:'<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/>',
+ trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+ alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v4M12 17.5h.01"/>',
+ cap:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+ clip:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"/>',
+ flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+ check:'<path d="M5 12l5 5 9-10"/>'
+};
+const ico=(k,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
+
+/* ---------- guide content ---------- */
+const T_STORAGE={cap:'جدول رقم (3-1): معايير تخزين المواد الغذائية الأساسية',head:['نوع المادة الغذائية','درجة الحرارة المثالية','مدة التخزين حسب المنطقة'],rows:[
+ ['اللحوم الطازجة','من 0° إلى +4°','من 2 إلى 3 أيام بدءاً من تاريخ الذبح'],
+ ['الدواجن الطازجة','من 0° إلى +4°','24 ساعة بدءاً من تاريخ الذبح'],
+ ['الدواجن المجمدة','≤ −18° (أقل أو يساوي 18 سالب)','حسب تاريخ نهاية الصلاحية'],
+ ['الأسماك','+2°','يُستهلك في نفس اليوم'],
+ ['المنتجات المجمدة','≤ −18° (أقل أو يساوي 18 سالب)','حسب تاريخ نهاية الصلاحية'],
+ ['المنتجات المبسترة','من 0° إلى +4°','حسب تاريخ نهاية الصلاحية'],
+ ['الخضروات الطازجة','من +5° إلى +10°','من 3 إلى 5 أيام'],
+ ['البيض','من +6° إلى +8°','10 أيام']],tcol:1};
+const T_ANNEX={cap:'ملحق: التخزين والتحكم في درجة الحرارة ومدة الحفظ في غرف التبريد',head:['المنتوج','درجة الحرارة','مدة الحفظ'],rows:[
+ ['السمك المجمد (Poisson surgelé)','≤ −18°C','3 أشهر (للمنتجات الدهنية) / 6 أشهر'],
+ ['السمك الطازج (Poisson frais)','من 0 إلى 4°C','يوم واحد'],
+ ['اللحم المفروم وتحضيرات اللحم المفروم','من 0 إلى 4°C','يوم واحد'],
+ ['الأحشاء (Abats)','4°C','من 1 إلى 2 يوم'],
+ ['الدواجن (Volailles)','4°C','يومان'],
+ ['اللحوم (Viandes)','≤ 7°C','من 2 إلى 3 أيام'],
+ ['المنتجات المبردة أو المبسترة','من 2 إلى 4°C','من 2 إلى 3 أيام'],
+ ['الخضر والفواكه (Légumes et fruits)','من 5 إلى 14°C','أسبوع كحد أقصى'],
+ ['الزبدة أو المارغرين','< 7°C','من 3 إلى 6 أسابيع'],
+ ['الحليب المبستر (Lait pasteurisé)','< 6°C','من 2 إلى 4 أيام'],
+ ['البيض (Œufs)','≤ 7°C','أسبوع واحد']],tcol:1};
+const T_COOK={cap:'جدول رقم (4-2): درجات الحرارة الآمنة للأغذية المطهوة',head:['نوع الغذاء','درجة الحرارة الآمنة'],rows:[
+ ['اللحوم الحمراء','+63° كحد أدنى'],['الدواجن','+74° كحد أدنى'],['الأسماك','+63° كحد أدنى'],['البيض','+63° كحد أدنى'],['الأطباق المركبة المسخنة (الطبق الرئيسي)','+74° كحد أدنى']],tcol:1};
+const T_RESP={cap:'جدول رقم (1-1): المهام والمسؤوليات',head:['المسؤول','المهام الرئيسية'],rows:[
+ ['مدير الإقامة','الإشراف العام والامتثال القانوني لمدى تطبيق الدليل'],
+ ['أطباء الإقامة','المراقبة الدورية للنظافة والصحة المنصوص عليها'],
+ ['رئيس مصلحة الإطعام','الإشراف اليومي والمتابعة'],
+ ['رئيس وحدة الإطعام ومسير المطعم','التحكم في جودة الأغذية وسلامة التحضير'],
+ ['عمال النظافة','تنفيذ برامج التنظيف والتطهير'],
+ ['عمال خدمة الإطعام','الامتثال لشروط التقديم والنظافة الشخصية'],
+ ['أعضاء لجنة استقبال السلع','استقبال السلع والتحكم في جودة الأغذية'],
+ ['مسير النادي','الامتثال لتعليمات الدليل']]};
+const T_CLEAN={cap:'جدول رقم (7-1): برنامج التنظيف اليومي',head:['المكان','التكرار','طريقة التنظيف','المادة المستعملة'],rows:[
+ ['منطقة التحضير','بعد كل عملية','مسح + تطهير','مطهر ملائم ومعتمد'],
+ ['الأرضيات','ثلاث (3) مرات في اليوم','كنس + غسل + تطهير','منظف ملائم متعدد'],
+ ['الطاولات والأسطح','بعد كل استعمال','مسح + تطهير','مطهر غذائي'],
+ ['المصارف والأحواض','مرتين (2) في اليوم','تنظيف عميق','معقم متخصص'],
+ ['غرف التبريد والثلاجات','يومياً','تنظيف داخلي + خارجي','منظف غذائي'],
+ ['المرافق الصحية','أربعة (4) مرات في اليوم','تنظيف شامل','مطهر قوي']]};
+const T_PRODUCTS={cap:'الجدول رقم (7-2): معايير مواد التنظيف الخاصة بالمطاعم الجامعية',head:['الفئة','الغرض','الخصائص'],rows:[
+ ['منظفات','لإزالة الأوساخ والدهون','يجب أن تكون معتمدة من السلطات الصحية'],
+ ['معقمات','للقضاء على الميكروبات','آمنة للغذاء (لا تترك بقايا سامة)'],
+ ['مطهرات متخصصة','للأسطح التي تلامس الغذاء','فعالة ضد الميكروبات']]};
+const T_WASTE={cap:'الجدول رقم (9-1): تصنيف النفايات',head:['تصنيف النفايات','مكونات هذا الصنف','أمثلة'],rows:[
+ ['نفايات عضوية','بقايا الطعام والخضراوات','قشور الخضار، الأكل الباقي في طبق'],
+ ['نفايات صلبة','علب بجميع أنواعها','علب كرتونية أو حديدية أو بلاستيكية'],
+ ['نفايات خطرة','مواد تنظيف وتطهير','قارورات المنظفات والمطهرات']]};
+const BOARDS=[
+ {c:'#e5484d',n:'أحمر',f:'اللحوم الحمراء'},
+ {c:'#f5c518',n:'أصفر',f:'الدواجن'},
+ {c:'#5bb450',n:'أخضر',f:'الخضروات'},
+ {c:'#3b9be0',n:'أزرق',f:'الأسماك'},
+ {c:'linear-gradient(135deg,#d9dde0,#a9b0b5 60%,#e8ebed)',n:'الفولاذ المقاوم للصدأ (Inox)',f:'المنتجات الجاهزة'}];
+
+const CH=[
+{id:'intro',num:'',ic:'book',title:'مقدمة',sum:'مكانة السلامة الغذائية وهدف الدليل',b:[
+ ['p','يندرج موضوع السلامة الغذائية في المطاعم الجامعية ضمن أولويات الديوان الوطني للخدمات الجامعية باعتباره ركيزة أساسية لضمان صحة الطلبة والعمال، من أجل بيئة جامعية آمنة ومحفزة على التحصيل العلمي.'],
+ ['p','يهدف هذا الدليل إلى وضع برنامج متكامل للسلامة الغذائية في المطاعم الجامعية، حيث يضمن تقديم وجبات صحية آمنة للطلبة والعمال وفق إطار قانوني وتنظيمي واضح ومعايير تقنية مثل نظام HACCP.'],
+ ['p','ويتولى الديوان الوطني للخدمات الجامعية تنفيذ محتوى الدليل والسهر على تجسيده ميدانياً من خلال تنظيم متابعة دورية وتقييم خدمات الإطعام عبر مختلف الإقامات والمطاعم الجامعية، مما سيضمن سلامة الطلبة والعمال في غذاء صحي ومتوازن.'],
+ ['tip','أُعدّ الدليل وفقاً للقرار الوزاري المشترك المؤرخ في 09 ذي القعدة 1446 هـ الموافق لـ 07 ماي 2025 م.']]},
+{id:'legal',num:'',ic:'law',title:'الإطار القانوني والمرجعي',sum:'القرارات والمراسيم والتعليمات التي بُني عليها الدليل',b:[
+ ['p','تم إعداد هذا الدليل وفقاً لما يلي:'],
+ ['ul',[
+  'القرار الوزاري المشترك المؤرخ في 7 ماي 2025، يحدد الشروط الخاصة بالنظافة والنظافة الصحية المطبقة في منشآت الإطعام. الجريدة الرسمية، العدد 43.',
+  'القرار الوزاري المشترك المؤرخ في 21 نوفمبر سنة 1999 والمتعلق بدرجات الحرارة وأساليب الحفظ بواسطة التبريد والتجميد أو التجميد المكثف للمواد الغذائية. الجريدة الرسمية، العدد 87.',
+  'مرسوم تنفيذي رقم 17-140 مؤرخ في 11 أبريل سنة 2017، يحدد شروط النظافة والنظافة الصحية أثناء عملية وضع المواد الغذائية للاستهلاك البشري. الجريدة الرسمية، العدد 24.',
+  'القانون رقم 11/18 المؤرخ في 02 جويلية 2018 المتعلق بالصحة.',
+  'المنشور الوزاري المشترك رقم 543 المؤرخ في 27 ديسمبر 1987 المتعلق بالنشاطات الحماية في الوسط الجامعي.',
+  'القانون رقم 03/09 المتعلق بسلامة الغذاء والماء.',
+  'التعليمة الوزارية المشتركة رقم 20 المؤرخة في 09 جويلية 2001 والمتعلقة بإنشاء لجان تنسيق نشاطات الحماية.',
+  'التعليمة رقم 05/DG/729 المؤرخة في 07 سبتمبر 2005.',
+  'التعليمة الوزارية المشتركة رقم 05 المؤرخة في 29 نوفمبر 1989 المتعلقة بحماية الصحية في الوسط الجامعي.',
+  'المنشور الوزاري المشترك رقم 329 المؤرخ في 1984/09/23 المتضمن الحماية الصحية في الوسط الجامعي.',
+  'المرسوم التنفيذي رقم 22-250 المؤرخ في 30 جوان 2022 المتعلق بقائمة الأمراض المتنقلة الخاضعة للتصريح الإجباري.',
+  'مذكرة وزارية رقم 16 المؤرخة في 18 جوان 2025 والمتعلقة بالتوجيهات الأساسية لصيانة ومعالجة الآبار.',
+  'معايير HACCP للتحكم في المخاطر الغذائية.']]]},
+{id:'c1',num:'1',ic:'target',title:'المفاهيم والأهداف',sum:'التعاريف، أماكن التدخل، هياكل المطاعم، المسؤوليات',b:[
+ ['h','1.1','التعريف والأهداف'],
+ ['h4','السلامة الغذائية'],['p','هي مجموع الإجراءات والممارسات التي تضمن سلامة الأغذية من التلوث البيولوجي والكيميائي والفيزيائي، بما يحمي صحة المستهلكين (الطلبة والعمال) من الأمراض المنقولة عبر الغذاء.'],
+ ['h4','التسمم الغذائي'],['p','اعتلال حاد في الجهاز الهضمي، قد يظهر في غضون ساعات أو أيام، نتيجة تناول غذاء أو شراب ملوث بميكروبات (بكتيريا أو فيروسات أو طفيليات) أو سمومها أو مواد كيميائية ضارة.'],
+ ['h4','غذاء ملوث'],['p','غذاء لم يعد صالحاً للاستهلاك البشري بسبب وجود عوامل حيوية (بكتيريا، فيروس، فطريات) أو كيميائية (بقايا مبيدات) أو مادية (معادن، مخلفات بشرية).'],
+ ['h','','أماكن التدخل: منشآت الإطعام بالإقامات الجامعية'],
+ ['ul',['<b>المطعم المدمج:</b> يتم فيه إعداد الوجبات وعرضها على الطلبة المقيمين بالإقامات الجامعية.',
+  '<b>المطعم المركزي:</b> يتم فيه إعداد الوجبات وعرضها على الطلبة المقيمين وغير المقيمين، ويتواجد بالمؤسسات البيداغوجية.',
+  '<b>وحدة الإطعام:</b> يتم فيها إعداد الوجبات أو عرضها دون إعدادها (مطعم تابع) على الطلبة المقيمين بملاحق الإيواء الإقامات الجامعية أو بأماكن متواجدة بالمؤسسات البيداغوجية.',
+  '<b>النادي:</b> هيكل يتواجد بالإقامات الجامعية أو على مستوى المؤسسة البيداغوجية، يتم فيه إعداد تحضيرات مطهوة موجهة للاستهلاك باردة أو ساخنة بما فيها المشروبات، الوجبات السريعة والخفيفة، السندويشات، المشويات، البيتزا وغيرها من الأغذية المماثلة.']],
+ ['h','','التعريف بهياكل المطاعم الجامعية'],
+ ['p','هي مجموعة الوحدات الإدارية التقنية والبشرية التي تنظم وتسير نشاط الإطعام داخل المؤسسة الجامعية، بهدف ضمان تقديم وجبات صحية متوازنة وآمنة للطلبة وفق القوانين والمعايير المعمول بها.'],
+ ['ul',['<b>الهياكل الأساسية:</b> قاعات أكل كافية تتناسب مع الطاقة الاستيعابية للإقامة أو المؤسسة (عدد المقاعد، تهوية، إنارة، عدد كافٍ من المغاسل ودورات المياه قريبة ومنفصلة مع وجود الغسول السائل ومكان لتغيير الملابس للعمال).',
+  '<b>التقسيم الوظيفي:</b> المطعم مقسم إلى مناطق وظيفية واضحة لاستقبال السلع، التخزين البارد والساخن، التحضير الأولي، توزيع الوجبات وغسل الأواني، مع مسارات منفصلة للنظيف والملوث.',
+  '<b>التجهيزات والوسائل:</b> تجهيزات طبخ وحفظ حديثة وسليمة (أفران، مواقد، ثلاجات، مجمدات، وحدات حفظ ساخن، أجهزة تهوية واستخراج الدخان مع سجل صيانة دورية، غرف تبريد، آلات تقطيع وفرم اللحم) بالإضافة إلى ميزان وطاولات تقطيع اللحم والدجاج والسمك.',
+  '<b>المخازن:</b> مجهزة برفوف مع وسائل قياس درجة الحرارة والرطوبة، ووجود حاويات نفايات مغطاة بإحكام وموزعة بطريقة تمنع التلوث.']],
+ ['h','1.2','الأهداف الرئيسية'],
+ ['ul',['تفادي تلوث الأغذية أثناء الاستقبال والتخزين والتحضير والطهي والتقديم.','ضمان الامتثال للمعايير الصحية القانونية المعمول بها.','تكوين، توعية وتحسيس جميع العاملين بالمطاعم الجامعية بممارسات السلامة الغذائية.','اعتماد وتوثيق جميع إجراءات المراقبة والمتابعة بشكل منهجي مع التأشير عليها من طرف المسؤول الأول للمؤسسة.']],
+ ['h','1.3','المسؤوليات التنظيمية'],['table',T_RESP]]},
+{id:'c2',num:'2',ic:'hand',title:'النظافة الشخصية والصحية',sum:'لباس العمل، القفازات، الشهادات الطبية والتكوين',b:[
+ ['h','2.1','متطلبات النظافة الشخصية'],['p','كل فرد عامل في منشآت الإطعام يجب أن:'],
+ ['ul',['يرتدي بدلة عمل موحدة ونظيفة (مئزر وقبعة وأحذية مغلقة) ذات ألوان حسب المهام.','يرتدي قفازات غذائية عند التعامل المباشر مع الأغذية الجاهزة.','يحافظ على نظافة يديه بغسلهما بشكل منتظم بماء وصابون سائل.','يقلّم أظافره بانتظام مع عدم ارتداء المجوهرات أثناء العمل.','عدم استعمال طلاء الأظافر بالنسبة لعاملات المطعم.','منع جميع عمال المطاعم المصابين بجروح أو قروح من مزاولة عملهم إلا بعد أخذ رأي الطبيب.','التأكد من عدم معارضة حالته الصحية لطبيعة العمل.','منع السعال أو العطس على الأغذية مع إلزامية ارتداء الكمامة عند الحاجة.','منع التدخين سواء (السجائر أو الشمة) في المطاعم والنوادي.']],
+ ['h','2.2','التكوين والكفاءة'],['p','يجب على كل عامل في منشآت الإطعام:'],
+ ['ul',['الحصول على شهادة طبية تثبت سلامته الصحية.','الحصول على شهادة تكوين معتمدة في مجال السلامة الغذائية.','إجراء فحوصات دورية (نصف سنوية على الأكثر) للتأكد من السلامة الصحية مع إجراء تحاليل البراز إجبارياً لكل عمال المطعم (رئيس مصلحة الإطعام، الطباخين، الجزارين، غاسلي الأواني، مسؤول المخزن، عمال التنظيف، مقدمي الوجبات) مرتين في العام (كل 06 أشهر).','وجود عدد كافٍ من العمال حسب الطاقة الاستيعابية وعدد الوجبات المقدمة.','ضرورة إعداد القوائم الاسمية لعمال المطاعم الجامعية والنوادي.','التعاقد مع طب العمل.']]]},
+{id:'c3',num:'3',ic:'box',title:'استقبال وتخزين المواد الغذائية',sum:'معايير الاستقبال، جدول التخزين، الدواجن المجمدة',b:[
+ ['h','3.1','معايير استقبال المواد الغذائية'],['p','عند استقبال أي مادة غذائية يجب التحقق من:'],
+ ['ul',['الهوية الكاملة للمنتج والمصدر الموثوق والتحقق من وسم المنتجات.','صلاحية المنتج وتاريخ انتهائه (لا تُقبل المنتجات منتهية الصلاحية).','سلامة التغليف والعبوات (لا توجد أضرار أو تسربات).','درجة حرارة المنتجات المبردة عند الاستقبال (يجب أن تكون بين 0° و+4°م).','الشهادات الصحية للمواد من أصل حيواني (لحوم - دواجن - أسماك - البيض - الأجبان والألبان).','مراقبة نظافة وسائل النقل الخاصة بالمواد الغذائية.']],
+ ['h','3.2','معايير تخزين المواد الغذائية'],['p','عند تخزين أي مادة غذائية يجب اتباع الجدول (3-1):'],['table',T_STORAGE],
+ ['note','<b>تنبيه هام فيما يخص تخزين واستهلاك الدواجن المجمدة:</b>'],
+ ['ul',['<b>الكمية الموجهة للتخزين والحفظ:</b> يتم حفظ وتخزين الدواجن المجمدة بعد استقبالها في درجة حرارة أقل أو يساوي 18 سالب (≤ −18°) مع احترام شروط التخزين لحمايتها من نمو البكتيريا والميكروبات التي تؤدي إلى فسادها.','<b>الكمية الموجهة للاستهلاك:</b> يجب أن يتم إذابة الدواجن المجمدة بطريقة آمنة للحفاظ على جودتها وسلامتها في درجة حرارة تتراوح بين 0° و+4° دون تجاوز مدة 24 سا من بداية إزالة التجميد.','يُمنع منعاً باتاً إعادة تجميد الدواجن مرة أخرى بعد إذابتها.','يجب احترام شروط سلسلة التبريد (نقل وتخزين)، مع إلزامية توفير آلات ووسائل التجميد الملائمة التي تصل درجة التجميد فيها أقل من 18 سالب (< −18°).']]]},
+{id:'c4',num:'4',ic:'flame',title:'تحضير وطهي الأغذية',sum:'الفصل بين المناطق، ألوان التقطيع، درجات الحرارة الحرجة',b:[
+ ['h','4.1','أماكن التحضير والفصل'],['p','المبدأ الأساسي هو تجنب تلوث الأغذية الجاهزة بالأغذية النيئة، لذلك يجب احترام الإجراءات التالية:'],
+ ['ul',['فصل مناطق تحضير اللحوم والدواجن والأسماك عن منطقة الخضروات.','استعمال أدوات مختلفة (سكاكين، طاولات تقطيع) لكل نوع غذاء.','يُمنع دخول الأشخاص خارج المصلحة إلى المطعم وخاصة قاعة الطهي.']],
+ ['p','ويمكن تمييز طاولات التقطيع بطلاء أرجلها حسب الجدول رقم (4-1):'],['colors'],
+ ['h','4.2','درجات الحرارة الحرجة للطهي'],['p','يجب التأكد من وصول الأغذية المطهوة إلى درجات الحرارة الآمنة حسب الجدول (4-2):'],['table',T_COOK],
+ ['h','4.3','الرابطات الغذائية'],
+ ['h4','الرابطة الساخنة'],['ul',['الأغذية الجاهزة التي تُقدَّم ساخنة يجب أن تُحفظ في درجة حرارة ≥ +63°.','يجب استهلاكها في نفس يوم التحضير.','عدم إعادة تسخين الأغذية أكثر من مرة واحدة.']],
+ ['h4','الرابطة الباردة'],['ul',['التبريد السريع من نهاية الطهي إلى +10° خلال ساعتين.','التخزين في درجة حرارة بين 0° إلى +4° كحد أقصى.']],
+ ['h','4.4','النظام الغذائي الخاص بالأمراض المزمنة'],['p','يجب الأخذ بعين الاعتبار الوجبات الخاصة ببعض الأمراض المزمنة بما يتوافق مع الحمية المناسبة بعد قرار طبيب الإقامة.']]},
+{id:'c5',num:'5',ic:'plate',title:'الطبق الشاهد وسجلات المراقبة',sum:'150 غ لمدة 5 أيام، والوثائق الواجب الاحتفاظ بها',b:[
+ ['h','5.1','نظام الأطباق الشاهدة'],['p','يُعرَّف الطبق الشاهد على أنه عينة من كل وجبة مطهوة بوزن 150 غرام يحتفظ بها المطعم لمدة 5 أيام لاستعمالها كدليل مادي في حالة الحاجة إلى فحص سلامة الأغذية.'],
+ ['p','التقيد ببطاقة الطبق الشاهد الذي يتضمن مكونات الوجبة، تاريخ ووقت أخذ عينة الوجبة واسم العامل المسؤول عن أخذ الوجبة في فطور الصباح وفي الغداء والعشاء، مع الاحتفاظ بنسخة مطابقة لبطاقة الطبق الشاهد.'],
+ ['h4','أهداف نظام الطبق الشاهد'],['ul',['التحقق من سلامة الغذاء في حالة احتمال وجود تسمم غذائي.','توثيق جودة الغذاء المقدم.','التحقق من السبب المباشر لحدوث التسمم الغذائي.']],
+ ['h4','إجراءات الحفظ'],['ul',['توضع العينات في عبوات غذائية من الفولاذ غير القابل للصدأ (INOX).','تُحفظ في درجة حرارة بين 0° إلى +4° في ثلاجة خاصة ذات واجهة زجاجية لتفادي الفتح والغلق المتكرر.','تُوسم بتاريخ وساعة أخذ العينة مع اسم العامل المكلف بذلك.','تُحفظ لمدة 5 أيام من تاريخ أخذ العينة.']],
+ ['h','5.2','وثائق المراقبة المطلوبة'],['p','يجب على مسؤول المطعم الاحتفاظ بالوثائق التالية وتقديمها عند الحاجة:'],
+ ['ul',['بطاقة عمليات التنظيف والتطهير موقعة من طرف مؤدي هذه الخدمة.','برنامج تنظيف حسب خطة دورية واضحة.','شهادات النظافة الصحية للمواد من أصل حيواني.','بطاقة صيانة الشفاطات ومخارج البخار الدورية.','بطاقة مراقبة زيوت القلي اليومية.','شهادات التكوين لعمال المطاعم.','شهادات التكوين على السلامة الغذائية لكل عمال المطعم كل حسب اختصاصه.','بطاقة مواد التنظيف والتطهير المستعملة مطابقة للمعايير التقنية للنظافة.','بطاقات تسجيل عدم المطابقة - في حالة وجود مشاكل.']]]},
+{id:'c6',num:'6',ic:'bug',title:'مكافحة الآفات ومراقبتها',sum:'الوقاية أولاً، وبرنامج مراقبة الفئران والحشرات',b:[
+ ['h','6.1','السياسة العامة لمكافحة الآفات'],['p','المبدأ الأساسي: الوقاية أفضل من العلاج.'],
+ ['ul',['تفادي دخول الفئران والحشرات من خلال إغلاق الشقوق والفتحات.','الحفاظ على النظافة المستمرة لتقليل مصادر الغذاء والماء.','إبادة سريعة لأي آفات تم اكتشافها.','العمل مع شركات متخصصة معتمدة لإبادة الآفات.']],
+ ['h','6.2','برنامج المراقبة الدورية'],
+ ['h4','الفئران'],['ul',['فحص الفخاخ واللواصق يومياً.','فحص الأسلاك والفتحات أسبوعياً.','تسجيل أي آثار (براز - آثار عض).']],
+ ['h4','الحشرات الزاحفة (صراصير، نمل، عناكب...)'],['ul',['فحص الزوايا والشقوق يومياً.','الانتباه إلى مناطق مصارف المياه والرطوبة.','تسجيل أي ملاحظات غير طبيعية.']],
+ ['h4','الحشرات الطائرة'],['ul',['فحص أنظمة الإضاءة والتهوية.','استعمال شبكات ذات مسامات ضيقة على النوافذ.','مصائد ضوئية في المناطق المناسبة.']],
+ ['h4','القطط'],['p','مكافحة ظاهرة تواجد القطط داخل المطاعم والنوادي.']]},
+{id:'c7',num:'7',ic:'spark',title:'النظافة والتطهير',sum:'برنامج التنظيف اليومي ومواد التنظيف المعتمدة',b:[
+ ['h','7.1','برنامج التنظيف اليومي'],['p','يتم عمل خطة للقيام بمهام التنظيف حسب الجدول أدناه:'],['table',T_CLEAN],
+ ['tip','يمكنك متابعة هذا البرنامج يومياً كقائمة تحقق من صفحة <a href="#tools">الأدوات</a> ← تنظيف اليوم.'],
+ ['h','7.2','مواد التنظيف المعتمدة'],['p','يجب أن تخضع مواد التنظيف المستعملة في المطاعم الجامعية للمعايير الواردة في الجدول (7-2):'],['table',T_PRODUCTS]]},
+{id:'c8',num:'8',ic:'wrench',title:'الصيانة والمعدات',sum:'معدات التبريد، الطهي، التهوية والشفط',b:[
+ ['h','8.1','معدات التبريد والتجميد'],['ul',['مزودة بنظام تسجيل درجة حرارة.','يجب فحصها بانتظام (شهرياً على الأقل).','يجب الإبلاغ الفوري عن أي عطل.','كتابة درجة الحرارة في غرف التبريد من طرف عامل مكلف من رئيس المطعم.']],
+ ['h','8.2','معدات الطهي والتسخين'],['ul',['مراقبة درجات الحرارة.','الصيانة الدورية المنتظمة (في كل عطلة جامعية على الأقل).','التنظيف العميق أسبوعياً.']],
+ ['h','8.3','أنظمة التهوية والشفط'],['ul',['تنظيف مراوح التهوية (في كل عطلة جامعية على الأقل).','فحص مخارج البخار (في كل عطلة جامعية على الأقل).','الصيانة الفنية لجميع أنظمة التهوية والشفط (قبل كل دخول جامعي).']]]},
+{id:'c9',num:'9',ic:'trash',title:'إدارة النفايات والصرف',sum:'ثلاث فئات للنفايات وقواعد التخلص منها',b:[
+ ['h','9.1','تصنيف النفايات'],['p','تُصنَّف النفايات إلى ثلاث فئات رئيسية حسب الجدول (9-1):'],['table',T_WASTE],
+ ['h','9.2','نظام التخلص من النفايات'],['ul',['استعمال حاويات ذات عجلات محكمة الإغلاق.','فصل وفرز النفايات حسب نوعها.','نقطة تجميع النفايات يجب أن تتواجد على بعد 40 متر خارج المطعم.','التخلص من النفايات يومياً مع الحرص على عدم تكديس الخبز داخل المطعم.','تنظيف الحاويات والمناطق المحيطة بها دورياً.']]]},
+{id:'c10',num:'10',ic:'alert',title:'الاستجابة للأزمات والمشاكل',sum:'التصريح الإجباري وخلية الأزمة',b:[
+ ['h','10.1','إجراءات في حالة احتمال تسمم غذائي'],['p','يجب اتخاذ الإجراءات التالية:'],
+ ['ul',['التصريح الإجباري لحالات التسمم المحتملة (اكتشاف حالتين (02) على الأقل مع تناول نفس الوجبة في نفس المكان والزمان) للإدارة ومصلحة علم الأوبئة والطب الوقائي (SEMEP) المختص إقليمياً.','على طبيب الإقامة التصريح الإجباري على استمارة خاصة معتمدة من طرف المصالح الصحية.','تكوين خلية أزمة على مستوى مديرية الخدمات الجامعية المعنية.','التنسيق مع السلطات الصحية المختصة (مصلحة علم الأوبئة والطب الوقائي المختصة إقليمياً) من أجل التكفل الأمثل بالمرضى.']],
+ ['h4','تشكيلة خلية الأزمة'],['ul',['مدير الخدمات الجامعية رئيساً.','مدير الإقامة الجامعية عضواً.','أطباء مديرية الخدمات الجامعية أعضاء.','الطبيب المنسق عضواً.','الطبيب البيطري عضواً.','البيولوجي عضواً.']],
+ ['p','وتتمثل مهامها الأساسية في تسيير الأزمات الصحية خاصة مع عودة الأوبئة وتحسباً لحالات التسممات الغذائية.'],
+ ['tip','خطوات التصرف متوفرة كقائمة تفاعلية في <a href="#tools">الأدوات</a> ← حالة تسمم.']]},
+{id:'c11',num:'11',ic:'cap',title:'التكوين والتوعية',sum:'محاور برنامج التكوين الإلزامي',b:[
+ ['h','11.1','برنامج التكوين الإلزامي'],['p','جميع الموظفين الذين لهم علاقة بالإطعام الجامعي يجب أن يتلقوا تكويناً شاملاً يتضمن:'],
+ ['ul',['شروط وقواعد السلامة الغذائية الأساسية.','النظافة الشخصية والصحية.','معايير تخزين الأغذية المختلفة.','أسس مكافحة الآفات (القوارض - الحشرات - ...الخ).','كيفية ملء السجلات والوثائق.','الاستجابة الطارئة للأزمات.','جلسات تحسيسية وتوعوية دورياً.']],
+ ['tip','استعمل <a href="#quiz">الاختبار</a> في نهاية كل جلسة تحسيسية لقياس الاستيعاب.']]},
+{id:'c12',num:'12',ic:'clip',title:'المراقبة الإدارية والتقييم',sum:'الرقابة الداخلية والتقييم الدوري',b:[
+ ['h','12.1','عمليات الرقابة الداخلية'],['ul',['مراقبة دورية من طرف طبيب الإقامة لهياكل الإطعام والنوادي مع إعداد تقرير واحد على الأقل في الأسبوع وكلما استدعى الأمر.','مراقبة شهرية لجميع الهياكل والمرافق من طرف لجنة تنسيق نشاطات الحماية الصحية طبقاً للتعليمة الوزارية المشتركة رقم 05 المؤرخة في 09 جويلية 2001.']],
+ ['h','12.2','التقييم الدوري'],['ul',['تقارير شهرية عن مدى تطبيق هذا الدليل.','تقييم فعالية برامج التنظيف والمكافحة.','تحديد النقائص والاختلالات مع متابعة تصحيحها من طرف لجنة وطنية متكونة من الأطباء المنسقين تحت إشراف مدير الديوان الوطني للخدمات.','التقييم الدوري من طرف لجنة تنسيق الوقاية الصحية.','توثيق التحسينات المستمرة.']]]},
+{id:'outro',num:'',ic:'flag',title:'خاتمة',sum:'إلزامية الدليل لكل منشآت الإطعام',b:[
+ ['p','أُعِدّ هذا الدليل الإجرائي للسلامة الغذائية داخل المطاعم الجامعية ليواكب جهود التطوير المستمر للخدمات الجامعية، لضمان صحة وسلامة الطلبة والعاملين، من خلال ترسيخ ممارسات النظافة والتحضير الجيد للوجبات وفقاً لنظام تحليل الأخطار ونقاط التحكم الحرجة (HACCP).'],
+ ['note','<b>كما يُعتبر هذا الدليل ملزم التنفيذ بكل منشآت الإطعام الخاصة بالمؤسسات الخدماتية.</b>']]}
+];
+
+/* ---------- render chapters ---------- */
+function tableHTML(t){
+  return `<div class="tbl-wrap"><table><caption>${t.cap}</caption><thead><tr>${t.head.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map((c,i)=>i===0?`<th scope="row" style="background:none;font-weight:600">${c}</th>`:`<td${t.tcol===i?' class="t"':''}>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function colorsHTML(){
+  return `<div class="tbl-wrap"><table><caption>جدول رقم (4-1): ألوان طاولات التقطيع</caption><thead><tr><th>اللون</th><th>المادة</th></tr></thead><tbody>${BOARDS.map(b=>`<tr><td><span class="swatch" style="background:${b.c}"></span>${b.n}</td><td>${b.f}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function blockHTML(b){
+  switch(b[0]){
+    case 'h':return `<h3 id="${CH._cur}-h${CH._h++}">${b[1]?`<span class="n num">${b[1]}</span>`:''}${b[2]}</h3>`;
+    case 'h4':return `<h4>${b[1]}</h4>`;
+    case 'p':return `<p>${b[1]}</p>`;
+    case 'ul':return `<ul>${b[1].map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    case 'table':return tableHTML(b[1]);
+    case 'colors':return colorsHTML();
+    case 'note':return `<div class="note">${b[1]}</div>`;
+    case 'tip':return `<div class="tip">${b[1]}</div>`;
+  }return '';
+}
+function chCard(c,read){
+  return `<a class="ch-card" href="#${c.id}"><div class="ch-ic">${ico(c.ic)}</div><div><h3>${c.num?c.num+'. ':''}${c.title}</h3><p>${c.sum}</p></div>${read.includes(c.id)?`<span class="done" aria-label="مقروء">${ico('check',18)}</span>`:''}</a>`;
+}
+function renderIndex(){
+  const read=store.get('read',[]);
+  $('#homeChapters').innerHTML=CH.filter(c=>c.num).map(c=>chCard(c,read)).join('');
+  $('#guideChapters').innerHTML=CH.map(c=>chCard(c,read)).join('');
+  const n=read.filter(id=>CH.some(c=>c.id===id)).length;
+  $('#progTxt').textContent=`${n} من ${CH.length} قسماً`;
+  $('#progBar').style.width=Math.round(n/CH.length*100)+'%';
+  const next=CH.find(c=>!read.includes(c.id));
+  const cb=$('#continueBtn');
+  if(next){cb.href='#'+next.id;cb.textContent=n?'تابع: '+next.title:'ابدأ القراءة'}else{cb.href='#quiz';cb.textContent='أكملت الدليل، اختبر نفسك'}
+}
+function renderReader(id){
+  const i=CH.findIndex(c=>c.id===id);const c=CH[i];CH._cur=id;CH._h=0;
+  const heads=c.b.filter(b=>b[0]==='h');
+  const prev=CH[i-1],next=CH[i+1];
+  $('#reader').innerHTML=`
+   <div class="reader-head"><div class="ch-ic">${ico(c.ic,26)}</div><div><div class="eyebrow">${c.num?'الفصل '+c.num:'الدليل الإجرائي'}</div><h2>${c.title}</h2></div></div>
+   ${heads.length>2?`<nav class="toc" aria-label="محتوى الفصل">${heads.map((h,hi)=>`<a href="#${c.id}" data-jump="${id}-h${hi}">${h[1]?h[1]+' ':''}${h[2]}</a>`).join('')}</nav>`:''}
+   <article class="prose">${c.b.map(blockHTML).join('')}</article>
+   <div class="reader-foot">
+     ${prev?`<a class="btn" href="#${prev.id}">→ ${prev.title}</a>`:'<span></span>'}
+     ${next?`<a class="btn primary" href="#${next.id}">${next.title} ←</a>`:`<a class="btn primary" href="#quiz">اختبر نفسك ←</a>`}
+   </div>`;
+  $('#reader').querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.getElementById(a.dataset.jump);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
+  const read=store.get('read',[]);if(!read.includes(id)){read.push(id);store.set('read',read)}
+  store.set('last',id);
+}
+
+/* ---------- router ---------- */
+function route(){
+  let h=(location.hash||'#home').slice(1);
+  let view='home',nav='home';
+  if(CH.some(c=>c.id===h)){view='reader';nav='guide'}
+  else if(['guide','tools','forms','quiz','home'].includes(h)){view=h;nav=h}
+  else if(h.startsWith('form-')){view='forms';nav='forms'}
+  else h='home';
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+view));
+  document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===nav)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  if(view==='reader')renderReader(h);
+  if(view==='forms')renderForm(h.startsWith('form-')?h.slice(5):null);
+  renderIndex();
+  window.scrollTo({top:0});
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- search ---------- */
+function plain(s){return String(s).replace(/<[^>]+>/g,'')}
+const INDEX=[];
+CH.forEach(c=>{let sec='';c.b.forEach(b=>{
+  if(b[0]==='h'){sec=(b[1]?b[1]+' ':'')+b[2];INDEX.push({c,sec,t:b[2]})}
+  else if(b[0]==='h4')INDEX.push({c,sec,t:b[1]});
+  else if(b[0]==='p'||b[0]==='note'||b[0]==='tip')INDEX.push({c,sec,t:plain(b[1])});
+  else if(b[0]==='ul')b[1].forEach(x=>INDEX.push({c,sec,t:plain(x)}));
+  else if(b[0]==='table')b[1].rows.forEach(r=>INDEX.push({c,sec,t:r.join(' · ')}));
+  else if(b[0]==='colors')BOARDS.forEach(x=>INDEX.push({c,sec,t:'طاولة تقطيع '+x.n+' · '+x.f}));
+})});
+const norm=s=>s.replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[ً-ْ]/g,'');
+function doSearch(q){
+  const res=$('#searchRes');q=q.trim();
+  if(q.length<2){res.innerHTML='<p class="muted">اكتب كلمتين أو أكثر من حرفين. أمثلة: <b>الدواجن</b>، <b>الطبق الشاهد</b>، <b>40 متر</b>، <b>HACCP</b>.</p>';return}
+  const nq=norm(q);const hits=INDEX.filter(x=>norm(x.t).includes(nq)||norm(x.c.title).includes(nq)).slice(0,40);
+  if(!hits.length){res.innerHTML=`<p class="muted">لا توجد نتائج لـ «${esc(q)}». جرّب كلمة أقصر أو مرادفاً.</p>`;return}
+  const rx=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g');
+  res.innerHTML=`<p class="muted" style="margin:0">${hits.length} نتيجة</p>`+hits.map(x=>`<a class="hit" href="#${x.c.id}"><small>${x.c.num?x.c.num+'. ':''}${x.c.title}${x.sec&&x.sec!==x.t?' · '+x.sec:''}</small><p>${esc(x.t).replace(rx,m=>`<mark>${m}</mark>`)}</p></a>`).join('');
+  res.querySelectorAll('.hit').forEach(a=>a.addEventListener('click',closeSearch));
+}
+function openSearch(){$('#searchPanel').classList.add('on');$('#searchInput').focus();doSearch($('#searchInput').value)}
+function closeSearch(){$('#searchPanel').classList.remove('on')}
+$('#openSearch').addEventListener('click',openSearch);
+$('#closeSearch').addEventListener('click',closeSearch);
+$('#searchInput').addEventListener('input',e=>doSearch(e.target.value));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch()});
+
+/* ---------- tool tabs ---------- */
+document.querySelectorAll('#toolTabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#toolTabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('.tool').forEach(t=>t.classList.toggle('on',t.id==='t-'+b.dataset.tool));
+  store.set('tool',b.dataset.tool);
+}));
+{const t=store.get('tool',null);if(t){const b=document.querySelector(`#toolTabs [data-tool="${t}"]`);if(b)b.click()}}
+
+/* storage checker */
+const SFOOD=[
+ {n:'اللحوم الطازجة',min:0,max:4,d:'من 2 إلى 3 أيام بدءاً من تاريخ الذبح',a:'اللحوم (Viandes): ≤ 7°C · من 2 إلى 3 أيام'},
+ {n:'الدواجن الطازجة',min:0,max:4,d:'24 ساعة بدءاً من تاريخ الذبح',a:'الدواجن (Volailles): 4°C · يومان'},
+ {n:'الدواجن المجمدة',min:-60,max:-18,d:'حسب تاريخ نهاية الصلاحية',a:'تُذاب بين 0° و+4° دون تجاوز 24 سا، ويُمنع إعادة تجميدها'},
+ {n:'الأسماك الطازجة',min:0,max:2,disp:'+2° (دون تجميد)',d:'يُستهلك في نفس اليوم',a:'السمك الطازج: من 0 إلى 4°C · يوم واحد'},
+ {n:'السمك المجمد',min:-60,max:-18,d:'3 أشهر (للمنتجات الدهنية) / 6 أشهر',a:'من جدول غرف التبريد في الملاحق'},
+ {n:'المنتجات المجمدة',min:-60,max:-18,d:'حسب تاريخ نهاية الصلاحية',a:''},
+ {n:'المنتجات المبسترة / المبردة',min:0,max:4,d:'حسب تاريخ نهاية الصلاحية',a:'المنتجات المبردة أو المبسترة: من 2 إلى 4°C · من 2 إلى 3 أيام'},
+ {n:'اللحم المفروم وتحضيراته',min:0,max:4,d:'يوم واحد',a:'من جدول غرف التبريد في الملاحق'},
+ {n:'الأحشاء (Abats)',min:0,max:4,disp:'4° (دون تجميد)',d:'من 1 إلى 2 يوم',a:'من جدول غرف التبريد في الملاحق'},
+ {n:'الخضروات الطازجة',min:5,max:10,d:'من 3 إلى 5 أيام',a:'الخضر والفواكه: من 5 إلى 14°C · أسبوع كحد أقصى'},
+ {n:'البيض',min:6,max:8,d:'10 أيام',a:'البيض (Œufs): ≤ 7°C · أسبوع واحد'},
+ {n:'الزبدة أو المارغرين',min:-60,max:6.99,disp:'< 7°',d:'من 3 إلى 6 أسابيع',a:'من جدول غرف التبريد في الملاحق'},
+ {n:'الحليب المبستر',min:-60,max:5.99,disp:'< 6°',d:'من 2 إلى 4 أيام',a:'من جدول غرف التبريد في الملاحق'},
+ {n:'استقبال منتج مبرد (أي نوع)',min:0,max:4,d:'—',a:'معيار الاستقبال: بين 0° و+4°م'}];
+const fmtT=v=>(v>0?'+':'')+v+'°';
+const rangeTxt=f=>f.disp||(f.min<=-60?'≤ '+fmtT(f.max):fmtT(f.min)+' إلى '+fmtT(f.max));
+$('#stFood').innerHTML=SFOOD.map((f,i)=>`<option value="${i}">${f.n}</option>`).join('');
+function runStore(){
+  const f=SFOOD[$('#stFood').value];const v=parseFloat($('#stTemp').value);
+  let out;
+  if(isNaN(v))out=`<div class="verdict info">أدخل درجة الحرارة المقاسة.</div>`;
+  else if(v>=f.min&&v<=f.max)out=`<div class="verdict ok">${ico('check',26)}<div>مطابق: ${fmtT(v)} ضمن المجال المسموح<small>المجال المطلوب: ${rangeTxt(f)}</small></div></div>`;
+  else{const hi=v>f.max;out=`<div class="verdict bad">${ico('alert',26)}<div>غير مطابق: ${fmtT(v)} ${hi?'أعلى':'أدنى'} من المجال المطلوب<small>المجال المطلوب: ${rangeTxt(f)}. ${f.n.startsWith('استقبال')?'يُرفض المنتج أو تُسجَّل عدم المطابقة.':'أبلغ المسؤول وسجّل عدم المطابقة لاتخاذ الإجراء التصحيحي.'}</small></div></div>`}
+  $('#stOut').innerHTML=out;
+  $('#stInfo').innerHTML=`<div class="kpi"><span>درجة الحرارة المثالية</span><b class="num" style="font-size:20px">${rangeTxt(f)}</b></div><div class="kpi"><span>مدة التخزين</span><b style="font-size:16px;line-height:1.5">${f.d}</b></div>${f.a?`<div class="kpi" style="grid-column:1/-1"><span>ملاحظة / جدول غرف التبريد</span><div style="font-size:14px;font-weight:500">${f.a}</div></div>`:''}`;
+}
+$('#stFood').addEventListener('change',runStore);$('#stTemp').addEventListener('input',runStore);runStore();
+
+/* cooking checker */
+const CFOOD=[{n:'الدواجن',t:74},{n:'الأطباق المركبة المسخنة (الطبق الرئيسي)',t:74},{n:'اللحوم الحمراء',t:63},{n:'الأسماك',t:63},{n:'البيض',t:63},{n:'حفظ ساخن لغذاء جاهز (الرابطة الساخنة)',t:63}];
+$('#ckFood').innerHTML=CFOOD.map((f,i)=>`<option value="${i}">${f.n} · الحد الأدنى +${f.t}°</option>`).join('');
+function runCook(){
+  const f=CFOOD[$('#ckFood').value];const v=+$('#ckTemp').value;$('#ckBig').textContent='+'+v+'°';
+  const d=v-f.t;
+  $('#ckOut').innerHTML=d>=0?`<div class="verdict ok">${ico('check',26)}<div>آمن: تم بلوغ الحد الأدنى (+${f.t}°)<small>الفارق: +${d}°</small></div></div>`:`<div class="verdict bad">${ico('flame',26)}<div>غير كافٍ: ينقص ${-d}° للوصول إلى +${f.t}°<small>واصل الطهي ثم أعد القياس في قلب الغذاء.</small></div></div>`;
+}
+$('#ckFood').addEventListener('change',runCook);$('#ckTemp').addEventListener('input',runCook);runCook();
+
+/* timers */
+const TM={witness:{h:120,lbl:'وقت أخذ العينة',end:'يمكن إتلاف العينة بعد',steps:['أخذ عينة 150 غ في عبوة INOX','حفظ بين 0° و+4° في ثلاجة ذات واجهة زجاجية']},
+ thaw:{h:24,lbl:'وقت بداية إزالة التجميد',end:'آخر أجل للاستهلاك',steps:['الإذابة بين 0° و+4°','يُمنع إعادة التجميد بعد الإذابة']},
+ cool:{h:2,lbl:'وقت نهاية الطهي',end:'يجب بلوغ +10° قبل',steps:['تبريد سريع','ثم التخزين بين 0° و+4°']}};
+function localISO(d){const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`}
+const fmtD=d=>d.toLocaleString('ar-DZ',{weekday:'long',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+$('#tmStart').value=localISO(new Date());
+function runTimer(){
+  const k=$('#tmType').value,c=TM[k];$('#tmStartLbl').firstChild.textContent=c.lbl;
+  const s=new Date($('#tmStart').value);if(isNaN(s)){$('#tmOut').innerHTML='';return}
+  const e=new Date(s.getTime()+c.h*3600e3);const now=new Date();const left=(e-now)/3600e3;
+  let st;
+  if(k==='witness')st=left>0?`<span class="pill warn">احتفظ بالعينة · متبقٍ ${left>=24?Math.floor(left/24)+' يوم و':''}${Math.floor(left%24)} سا</span>`:`<span class="pill ok">انتهت مدة الحفظ</span>`;
+  else st=left>0?`<span class="pill ${left<(k==='cool'?.5:4)?'warn':'ok'}">متبقٍ ${Math.floor(left)} سا ${Math.round((left%1)*60)} د</span>`:`<span class="pill bad">تم تجاوز الأجل</span>`;
+  $('#tmOut').innerHTML=`<div class="row" style="justify-content:space-between"><div><div class="eyebrow">${c.end}</div><b style="font-size:18px">${fmtD(e)}</b></div>${st}</div>
+   <div class="timeline"><div class="tl"><span class="dot"></span><div><b>${fmtD(s)}</b><div class="muted" style="font-size:13.5px">${c.steps[0]}</div></div></div><div class="tl end"><span class="dot"></span><div><b>+${c.h} ساعة</b><div class="muted" style="font-size:13.5px">${c.steps[1]}</div></div></div></div>`;
+}
+['change','input'].forEach(ev=>{$('#tmType').addEventListener(ev,runTimer);$('#tmStart').addEventListener(ev,runTimer)});runTimer();
+
+/* boards */
+$('#boards').innerHTML=BOARDS.map((b,i)=>`<button class="board" data-i="${i}" aria-pressed="${i===0}"><div class="pl" style="background:${b.c}"></div>${b.f}</button>`).join('');
+function pickBoard(i){document.querySelectorAll('.board').forEach(x=>x.setAttribute('aria-pressed',x.dataset.i==i));const b=BOARDS[i];$('#boardOut').innerHTML=`<div class="verdict info"><span class="swatch" style="background:${b.c};width:34px;height:34px"></span><div>${b.f}: طاولة لون ${b.n}<small>لا تستعمل هذه الطاولة ولا سكاكينها لأي نوع غذاء آخر لتفادي التلوث المتبادل.</small></div></div>`}
+document.querySelectorAll('.board').forEach(b=>b.addEventListener('click',()=>pickBoard(b.dataset.i)));pickBoard(0);
+
+/* cleaning checklist */
+const CLEAN=[{n:'منطقة التحضير',f:'بعد كل عملية · مسح + تطهير',k:'count'},{n:'الأرضيات',f:'3 مرات في اليوم · كنس + غسل + تطهير',k:3},{n:'الطاولات والأسطح',f:'بعد كل استعمال · مسح + تطهير',k:'count'},{n:'المصارف والأحواض',f:'مرتين في اليوم · تنظيف عميق',k:2},{n:'غرف التبريد والثلاجات',f:'يومياً · تنظيف داخلي + خارجي',k:1},{n:'المرافق الصحية',f:'4 مرات في اليوم · تنظيف شامل',k:4}];
+const today=()=>localISO(new Date()).slice(0,10);
+function getClean(){let c=store.get('clean',null);if(!c||c.d!==today())c={d:today(),v:CLEAN.map(x=>x.k==='count'?0:Array(x.k).fill(false))};return c}
+function renderClean(){
+  const c=getClean();
+  $('#cleanDate').textContent=new Date().toLocaleDateString('ar-DZ',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('#cleanList').innerHTML=CLEAN.map((x,i)=>`<div class="chk-row"><div class="lbl"><b>${x.n}</b><span>${x.f}</span></div>${x.k==='count'?`<div class="counter"><button class="btn small" data-c="${i}" data-d="-1" aria-label="إنقاص">−</button><b class="num">${c.v[i]}</b><button class="btn small primary" data-c="${i}" data-d="1" aria-label="تسجيل عملية">+ عملية</button></div>`:`<div class="ticks">${c.v[i].map((t,j)=>`<button class="tick" data-i="${i}" data-j="${j}" aria-pressed="${t}" aria-label="${x.n} المرة ${j+1}">${ico('check',18)}</button>`).join('')}</div>`}</div>`).join('');
+  let tot=0,dn=0;CLEAN.forEach((x,i)=>{if(x.k!=='count'){tot+=x.k;dn+=c.v[i].filter(Boolean).length}});
+  const p=Math.round(dn/tot*100);$('#cleanScore').textContent=p+'% من المهام المجدولة';$('#cleanBar').style.width=p+'%';
+  $('#cleanScore').className='pill '+(p===100?'ok':p>=50?'warn':'info');
+  $('#cleanList').querySelectorAll('.tick').forEach(b=>b.addEventListener('click',()=>{const c=getClean();c.v[b.dataset.i][b.dataset.j]=!c.v[b.dataset.i][b.dataset.j];store.set('clean',c);renderClean()}));
+  $('#cleanList').querySelectorAll('[data-c]').forEach(b=>b.addEventListener('click',()=>{const c=getClean();c.v[b.dataset.c]=Math.max(0,c.v[b.dataset.c]+ +b.dataset.d);store.set('clean',c);renderClean()}));
+}
+$('#cleanReset').addEventListener('click',()=>{store.set('clean',null);renderClean()});renderClean();
+
+/* crisis */
+const CRISIS=['التأكد من وجود حالتين (02) على الأقل تناولت نفس الوجبة في نفس المكان والزمان.','[إجراء تكميلي مقترح، غير منصوص عليه حرفياً في الفصل 10] الحفاظ على الأطباق الشاهدة للوجبات المعنية (عينات 150 غ المحفوظة 5 أيام) لاستعمالها كدليل مادي، تطبيقاً لأهداف نظام الطبق الشاهد (الفصل 5).','التصريح الإجباري للإدارة ولمصلحة علم الأوبئة والطب الوقائي (SEMEP) المختصة إقليمياً.','تصريح طبيب الإقامة على الاستمارة الخاصة المعتمدة من طرف المصالح الصحية.','تكوين خلية أزمة على مستوى مديرية الخدمات الجامعية برئاسة مدير الخدمات الجامعية.','التنسيق مع SEMEP من أجل التكفل الأمثل بالمرضى.','[إجراء تكميلي مقترح، غير منصوص عليه حرفياً في الفصل 10] تقديم وثائق المراقبة عند الطلب (بطاقات الطبق الشاهد، التنظيف، شهادات المواد ذات الأصل الحيواني...)، كما يلزم بذلك الفصل 5.2.'];
+function renderCrisis(){const d=store.get('crisis',[]);$('#crisisSteps').innerHTML=CRISIS.map((s,i)=>`<div class="step${d.includes(i)?' done':''}" role="button" tabindex="0" data-i="${i}" aria-pressed="${d.includes(i)}"><p>${s}</p></div>`).join('');
+ $('#crisisSteps').querySelectorAll('.step').forEach(el=>{const t=()=>{let d=store.get('crisis',[]);const i=+el.dataset.i;d=d.includes(i)?d.filter(x=>x!==i):[...d,i];store.set('crisis',d);renderCrisis()};el.addEventListener('click',t);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}})})}
+$('#crisisReset').addEventListener('click',()=>{store.set('crisis',[]);renderCrisis()});renderCrisis();
+
+/* ---------- forms ---------- */
+const ANNEX=[
+ ['برنامج التنظيف','وثيقة إجرائية إلزامية تطبيقاً للمادة 31 من القرار الوزاري المشترك المؤرخ في 07 ماي 2025: المناطق والتجهيزات والأواني المراد تنظيفها، توزيع المهام، طرق ووتيرة التنظيف، مخطط مكافحة الآفات والقوارض والأجسام الضارة.','c7'],
+ ['شهادات النظافة الصحية للمواد من أصل حيواني','لإثبات المنشأ وسلامة المواد ذات الأصل الحيواني التي يتم التعامل معها في المطاعم الجامعية، وهي نفسها الشهادة البيطرية.','c3'],
+ ['شهادة تكوين المستخدمين في مجال نظافة الأغذية','تثبت المعرفة والإلمام بالقواعد، تطبيق الممارسات الحسنة، الامتثال لمتطلبات HACCP وتجنب مخاطر التلوث.','c11'],
+ ['شهادة طبية تثبت كفاءة المستخدمين','مسلمة من مصلحة طب العمل. لكل عامل بالمطعم ملف طبي خاص بالمتابعة الصحية الدورية من طرف طبيب الإقامة.','c2']];
+$('#annexList').innerHTML=ANNEX.map(a=>`<div class="form-item"><h3>${a[0]}</h3><p>${a[1]}</p><div class="row"><a class="btn small" href="#${a[2]}">الفصل المرتبط</a></div></div>`).join('');
+
+const INSPECT=[
+ {t:'1. المطبخ',r:['أرضية المطبخ','الأفران والموقدات','طاولات التحضير','حالة الحوض','قاعة الطعام','الإضاءة','التهوية']},
+ {t:'2. عمال المطبخ',r:['ارتداء القبعة','ارتداء القفازات','ارتداء المآزر','النظافة الشخصية']},
+ {t:'3. المخازن',r:['حالة النظافة والصيانة','شروط التخزين']},
+ {t:'4. غرف التبريد',r:['الترموستات','النظافة','فصل المواد الغذائية'],w:1},
+ {t:'5. النادي',r:['النظافة','عرض المواد الغذائية','التهوية','ارتداء المآزر'],w:1},
+ {t:'6. الإيواء',r:['النظافة','التهوية','التدفئة','حالة الفراش والأسرة','نظافة دورات المياه والحمامات','الماء الساخن في المرشات','أخرى'],wing:1}];
+const RL=['سيئ','متوسط','جيد'];
+function ring(p){const r=34,c=2*Math.PI*r;const col=p>=75?'var(--ok)':p>=50?'var(--warn)':'var(--bad)';return `<svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle cx="42" cy="42" r="${r}" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 42 42)"/><text x="42" y="48" text-anchor="middle" font-size="18">${p}%</text></svg>`}
+function inspectState(){return store.get('inspect',{v:{},w:{},wing:'',notes:'',doc:'',site:'',date:today()})}
+function renderInspect(){
+  const s=inspectState();
+  const all=[];INSPECT.forEach((sec,si)=>sec.r.forEach((r,ri)=>all.push({k:si+'_'+ri,sec:sec.t,r})));
+  const rated=all.filter(x=>s.v[x.k]!==undefined);const pts=rated.reduce((a,x)=>a+s.v[x.k],0);
+  const pct=rated.length?Math.round(pts/(rated.length*2)*100):0;const bad=rated.filter(x=>s.v[x.k]===0);
+  return `<a class="btn small" href="#forms">→ كل البطاقات</a>
+  <div class="card" style="margin-top:12px"><div class="eyebrow">البطاقة التقنية الدورية</div><h2 style="font-size:19px;margin:2px 0 10px">مراقبة النظافة والصحة في الوسط الجامعي</h2>
+   <div class="grid2"><label class="f" for="inSite">المطعم / الإقامة<input class="inp" id="inSite" value="${esc(s.site)}" placeholder="مثال: الإقامة الجامعية ..."></label><label class="f" for="inDate">تاريخ المراقبة<input class="inp num" id="inDate" type="date" value="${esc(s.date)}"></label></div></div>
+  <div class="card score" style="margin-top:12px">${ring(pct)}<div><b style="font-size:16px">${rated.length} من ${all.length} بنداً مقيَّماً</b><div class="muted" style="font-size:14px">${bad.length?`<span class="pill bad">${bad.length} بند سيئ</span> يحتاج إجراءً تصحيحياً`:'لا توجد بنود سيئة حتى الآن'}</div></div></div>
+  ${INSPECT.map((sec,si)=>{const sr=sec.r.map((r,ri)=>s.v[si+'_'+ri]);const n=sr.filter(v=>v!==undefined).length;return `<div class="card rate-sec" style="margin-top:12px"><h3>${sec.t}<span class="pill info num">${n}/${sec.r.length}</span></h3>
+   ${sec.wing?`<label class="f" for="inWing" style="margin-bottom:6px">رقم الجناح<input class="inp" id="inWing" value="${esc(s.wing)}"></label>`:''}
+   ${sec.r.map((r,ri)=>{const k=si+'_'+ri;return `<div class="rate-row"><span class="lbl">${r}</span><span class="seg" role="group" aria-label="${r}">${[0,1,2].map(v=>`<button data-k="${k}" data-v="${v}" aria-pressed="${s.v[k]===v}">${RL[v]}</button>`).join('')}</span></div>`}).join('')}
+   ${sec.w?`<div class="rate-row"><span class="lbl">الطبق الشاهد</span><span class="seg" role="group" aria-label="الطبق الشاهد">${['24 ساعة','48 ساعة','72 ساعة','5 أيام'].map(w=>`<button data-w="${si}" data-wv="${w}" aria-pressed="${s.w[si]===w}" data-v="2">${w}</button>`).join('')}</span></div>`:''}
+  </div>`}).join('')}
+  <div class="card stack" style="margin-top:12px"><label class="f" for="inNotes">ملاحظات وتوصيات<textarea class="inp" id="inNotes" rows="4">${esc(s.notes)}</textarea></label>
+   <label class="f" for="inDoc">اسم الطبيب المراقب<input class="inp" id="inDoc" value="${esc(s.doc)}"></label>
+   <div class="row"><button class="btn primary" id="inCopy">نسخ التقرير</button><button class="btn" id="inReset">بطاقة جديدة</button></div>
+   <textarea class="inp copybox" id="inBox" readonly aria-label="نص التقرير"></textarea></div>`;
+}
+function inspectReport(){
+  const s=inspectState();let t=`البطاقة التقنية الدورية لمراقبة النظافة والصحة في الوسط الجامعي\nالمطعم/الإقامة: ${s.site||'—'}\nالتاريخ: ${s.date}\n`;
+  let pts=0,n=0;const bad=[];
+  INSPECT.forEach((sec,si)=>{t+=`\n${sec.t}${sec.wing&&s.wing?' (الجناح '+s.wing+')':''}\n`;sec.r.forEach((r,ri)=>{const v=s.v[si+'_'+ri];if(v!==undefined){pts+=v;n++;if(v===0)bad.push(sec.t+' · '+r)}t+=`- ${r}: ${v===undefined?'—':RL[v]}\n`});if(sec.w)t+=`- الطبق الشاهد: ${s.w[si]||'—'}\n`});
+  t+=`\nنسبة المطابقة: ${n?Math.round(pts/(n*2)*100):0}% (${n} بنداً مقيَّماً)\n`;
+  if(bad.length)t+=`بنود سيئة تحتاج إجراءً تصحيحياً:\n${bad.map(b=>'• '+b).join('\n')}\n`;
+  t+=`\nملاحظات وتوصيات: ${s.notes||'—'}\nاسم وتوقيع الطبيب المراقب: ${s.doc||'—'}`;return t;
+}
+function bindInspect(){
+  const box=$('#formView');const save=f=>{const s=inspectState();f(s);store.set('inspect',s)};
+  box.querySelectorAll('[data-k]').forEach(b=>b.addEventListener('click',()=>{save(s=>{const v=+b.dataset.v;s.v[b.dataset.k]=s.v[b.dataset.k]===v?undefined:v;if(s.v[b.dataset.k]===undefined)delete s.v[b.dataset.k]});const y=scrollY;renderForm('inspect');scrollTo(0,y)}));
+  box.querySelectorAll('[data-w]').forEach(b=>b.addEventListener('click',()=>{save(s=>{s.w[b.dataset.w]=s.w[b.dataset.w]===b.dataset.wv?'':b.dataset.wv});const y=scrollY;renderForm('inspect');scrollTo(0,y)}));
+  [['inSite','site'],['inDate','date'],['inWing','wing'],['inNotes','notes'],['inDoc','doc']].forEach(([id,k])=>{const e=document.getElementById(id);if(e)e.addEventListener('input',()=>save(s=>s[k]=e.value))});
+  $('#inCopy').addEventListener('click',()=>copyText(inspectReport(),'inBox'));
+  $('#inReset').addEventListener('click',()=>{store.set('inspect',null);renderForm('inspect');toast('بطاقة جديدة')});
+}
+
+/* fridge log */
+const FR=[{n:'ثلاجة رقم 01',t:4},{n:'ثلاجة رقم 02',t:6},{n:'ثلاجة رقم 03',t:10}];
+function fridgeKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)}
+function renderFridge(){
+  const log=store.get('fr_'+fridgeKey(),{});const d=new Date();const days=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();const td=d.getDate();
+  const cell=(f,slot,day)=>{const v=log[`${f}_${slot}_${day}`];if(v===undefined||v==='')return `<td class="${day===td?'today':''}"></td>`;const dev=+v>FR[f].t+2;return `<td class="num ${dev?'dev':'okc'} ${day===td?'today':''}">${v}</td>`};
+  let devs=0;Object.entries(log).forEach(([k,v])=>{if(v!==''&&+v>FR[+k[0]].t+2)devs++});
+  return `<a class="btn small" href="#forms">→ كل البطاقات</a>
+  <div class="card stack" style="margin-top:12px"><div><div class="eyebrow">متابعة درجة الحرارة في غرف التبريد</div><h2 style="font-size:19px;margin-top:2px">${d.toLocaleDateString('ar-DZ',{month:'long',year:'numeric'})}</h2></div>
+   <div class="note" style="margin:0">يجب قياس درجة الحرارة قبل بدء النشاط. في حالة تجاوز الدرجة المستهدفة بمقدار 2° تُحاط القيمة بدائرة ويُبلَّغ المسؤول لاتخاذ الإجراء التصحيحي اللازم.</div>
+   <div class="grid2"><label class="f" for="frF">غرفة التبريد<select class="inp" id="frF">${FR.map((f,i)=>`<option value="${i}">${f.n} · المستهدفة ${String(f.t).padStart(2,'0')}°</option>`).join('')}</select></label>
+    <label class="f" for="frS">الفترة<select class="inp" id="frS"><option value="m">صباحاً</option><option value="e"${d.getHours()>=14?' selected':''}>مساءً</option></select></label>
+    <label class="f" for="frDay">اليوم<input class="inp num" id="frDay" type="number" min="1" max="${days}" value="${td}"></label>
+    <label class="f" for="frV">الدرجة المقاسة (°م)<input class="inp num" id="frV" type="number" step="0.5" inputmode="decimal" placeholder="مثال: 3.5"></label></div>
+   <div id="frMsg"></div>
+   <div class="row"><button class="btn primary" id="frSave">تسجيل القراءة</button><span class="pill ${devs?'bad':'ok'}">${devs} تجاوز هذا الشهر</span><button class="btn small" id="frCopy">نسخ السجل</button></div>
+   <textarea class="inp copybox" id="frBox" readonly aria-label="نص السجل"></textarea></div>
+  <div class="fridge-grid" style="margin-top:12px"><table><thead><tr><th>الثلاجة</th><th>الفترة</th>${Array.from({length:days},(_,i)=>`<th class="num">${i+1}</th>`).join('')}</tr></thead><tbody>
+   ${FR.map((f,fi)=>['m','e'].map((s,si)=>`<tr>${si===0?`<th rowspan="2" style="white-space:nowrap">${f.n}<br><span class="muted" style="font-weight:400">المستهدفة ${String(f.t).padStart(2,'0')}°</span></th>`:''}<th>${s==='m'?'صباح':'مساء'}</th>${Array.from({length:days},(_,i)=>cell(fi,s,i+1)).join('')}</tr>`).join('')).join('')}
+  </tbody></table></div>`;
+}
+function bindFridge(){
+  const chk=()=>{const f=FR[$('#frF').value];const v=parseFloat($('#frV').value);$('#frMsg').innerHTML=isNaN(v)?'':v>f.t+2?`<div class="verdict bad">${ico('alert',22)}<div>تجاوز: ${v}° أعلى من ${f.t+2}° (المستهدفة ${f.t}° + 2°)<small>أبلغ المسؤول لاتخاذ الإجراء التصحيحي.</small></div></div>`:`<div class="verdict ok">${ico('check',22)}<div>ضمن الحد المسموح (≤ ${f.t+2}°)</div></div>`};
+  ['frF','frV'].forEach(id=>document.getElementById(id).addEventListener('input',chk));
+  $('#frSave').addEventListener('click',()=>{const v=$('#frV').value;const day=+$('#frDay').value;if(v===''||!day){toast('أدخل اليوم والدرجة');return}const log=store.get('fr_'+fridgeKey(),{});log[`${$('#frF').value}_${$('#frS').value}_${day}`]=v;store.set('fr_'+fridgeKey(),log);toast('تم التسجيل');const y=scrollY;renderForm('fridge');scrollTo(0,y)});
+  $('#frCopy').addEventListener('click',()=>{const log=store.get('fr_'+fridgeKey(),{});let t='متابعة درجة الحرارة في غرف التبريد · '+fridgeKey()+'\n';FR.forEach((f,fi)=>{t+=`\n${f.n} (المستهدفة ${f.t}°)\n`;Object.keys(log).filter(k=>k.startsWith(fi+'_')).sort((a,b)=>+a.split('_')[2]-+b.split('_')[2]).forEach(k=>{const [,s,d]=k.split('_');const v=log[k];t+=`- اليوم ${d} ${s==='m'?'صباحاً':'مساءً'}: ${v}°${+v>f.t+2?' ⚠ تجاوز':''}\n`})});copyText(t,'frBox')});
+}
+
+/* oil card */
+function renderOil(){
+  const L=store.get('oil',[]);
+  return `<a class="btn small" href="#forms">→ كل البطاقات</a>
+  <div class="card stack" style="margin-top:12px"><div><div class="eyebrow">بطاقة رقابة زيوت القلي</div><p class="muted" style="margin:4px 0 0;font-size:14px">تُراقب الزيوت من حيث الرائحة والذوق واللون، وتُستبدل عند تغير أحد هذه المعايير.</p></div>
+   ${['الرائحة','الذوق','اللون'].map((c,i)=>`<div class="rate-row"><span class="lbl">${c}</span><span class="seg" role="group" aria-label="${c}"><button data-oc="${i}" data-v="2" aria-pressed="true">عادي</button><button data-oc="${i}" data-v="0" aria-pressed="false">متغير</button></span></div>`).join('')}
+   <div id="oilVerdict"></div>
+   <div class="grid2"><label class="f" for="oilWhy">سبب الاستبدال (إن وجد)<input class="inp" id="oilWhy"></label><label class="f" for="oilName">اسم المسؤول<input class="inp" id="oilName" value="${esc(store.get('oilName',''))}"></label></div>
+   <div class="row"><button class="btn primary" id="oilSave">تسجيل الفحص</button><button class="btn small" id="oilCopy">نسخ البطاقة</button></div>
+   <textarea class="inp copybox" id="oilBox" readonly aria-label="نص البطاقة"></textarea>
+   <div class="entries">${L.length?L.slice().reverse().map(e=>`<div class="entry"><span class="num">${e.d}</span><span>${e.c.map((v,i)=>['الرائحة','الذوق','اللون'][i]+': '+(v?'عادي':'متغير')).join(' · ')}</span><span class="pill ${e.r?'bad':'ok'}">${e.r?'استُبدل':'لم يُستبدل'}</span></div>`).join(''):'<p class="muted" style="margin:0">لا توجد فحوصات مسجلة بعد.</p>'}</div></div>`;
+}
+function bindOil(){
+  const c=[2,2,2];
+  const upd=()=>{const alt=c.some(v=>v===0);$('#oilVerdict').innerHTML=alt?`<div class="verdict bad">${ico('alert',22)}<div>قرار الاستبدال: نعم<small>تغيّر معيار واحد على الأقل. اذكر سبب الاستبدال.</small></div></div>`:`<div class="verdict ok">${ico('check',22)}<div>قرار الاستبدال: لا<small>الزيت صالح للاستعمال.</small></div></div>`};
+  document.querySelectorAll('[data-oc]').forEach(b=>b.addEventListener('click',()=>{c[b.dataset.oc]=+b.dataset.v;document.querySelectorAll(`[data-oc="${b.dataset.oc}"]`).forEach(x=>x.setAttribute('aria-pressed',x===b));upd()}));upd();
+  $('#oilSave').addEventListener('click',()=>{const L=store.get('oil',[]);const nm=$('#oilName').value;store.set('oilName',nm);L.push({d:new Date().toLocaleString('ar-DZ',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}),c:c.map(v=>v===2),r:c.some(v=>v===0),why:$('#oilWhy').value,n:nm});store.set('oil',L.slice(-60));toast('تم التسجيل');renderForm('oil')});
+  $('#oilCopy').addEventListener('click',()=>{const L=store.get('oil',[]);copyText('بطاقة رقابة زيوت القلي\n'+L.map(e=>`- ${e.d} | الرائحة: ${e.c[0]?'عادي':'متغير'} | الذوق: ${e.c[1]?'عادي':'متغير'} | اللون: ${e.c[2]?'عادي':'متغير'} | الاستبدال: ${e.r?'نعم ('+(e.why||'—')+')':'لا'} | ${e.n||'—'}`).join('\n'),'oilBox')});
+}
+
+/* witness card */
+function renderWitness(){
+  const L=store.get('witness',[]);const now=Date.now();
+  return `<a class="btn small" href="#forms">→ كل البطاقات</a>
+  <div class="card stack" style="margin-top:12px"><div><div class="eyebrow">بطاقة الطبق الشاهد</div><p class="muted" style="margin:4px 0 0;font-size:14px">وزن العينة 150 غ · الحفظ بين 0 و+4° · مدة الحفظ 5 أيام (120 ساعة من توقيت أخذ العينة).</p></div>
+   <div class="grid2"><label class="f" for="wMeal">الوجبة<select class="inp" id="wMeal"><option>فطور الصباح</option><option>الغداء</option><option>العشاء</option></select></label>
+    <label class="f" for="wTime">توقيت أخذ العينة<input class="inp num" id="wTime" type="datetime-local" value="${localISO(new Date())}"></label>
+    <label class="f" for="wComp" style="grid-column:1/-1">مكونات الوجبة<input class="inp" id="wComp" placeholder="مثال: عدس، دجاج مشوي، سلطة، برتقال"></label>
+    <label class="f" for="wName">اسم المسؤول عن أخذ العينة<input class="inp" id="wName" value="${esc(store.get('wName',''))}"></label></div>
+   <div class="row"><button class="btn primary" id="wSave">تسجيل العينة</button><button class="btn small" id="wCopy">نسخ البطاقة</button></div>
+   <textarea class="inp copybox" id="wBox" readonly aria-label="نص البطاقة"></textarea>
+   <div class="entries">${L.length?L.slice().reverse().map((e,ri)=>{const end=e.t+120*3600e3;const left=(end-now)/3600e3;return `<div class="entry"><span><b>${e.m}</b> · ${esc(e.c||'—')}<br><span class="muted num" style="font-size:12.5px">${new Date(e.t).toLocaleString('ar-DZ',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})} · ${esc(e.n||'—')}</span></span><span class="pill ${left>0?'warn':'ok'}">${left>0?'تُحفظ حتى '+new Date(end).toLocaleDateString('ar-DZ',{day:'numeric',month:'short'}):'يمكن إتلافها'}</span></div>`}).join(''):'<p class="muted" style="margin:0">لا توجد عينات مسجلة بعد.</p>'}</div></div>`;
+}
+function bindWitness(){
+  $('#wSave').addEventListener('click',()=>{const t=new Date($('#wTime').value).getTime();if(isNaN(t)){toast('أدخل توقيت أخذ العينة');return}const L=store.get('witness',[]);const n=$('#wName').value;store.set('wName',n);L.push({m:$('#wMeal').value,t,c:$('#wComp').value,n});store.set('witness',L.slice(-60));toast('تم تسجيل العينة');renderForm('witness')});
+  $('#wCopy').addEventListener('click',()=>{const L=store.get('witness',[]);copyText('بطاقة الطبق الشاهد\n'+L.map(e=>`- ${e.m} | ${new Date(e.t).toLocaleString('ar-DZ')} | المكونات: ${e.c||'—'} | المسؤول: ${e.n||'—'}`).join('\n'),'wBox')});
+}
+
+/* ---------- generic log cards ---------- */
+const HEADER_F=[{k:'dir',l:'مديرية الخدمات الجامعية',t:'text'},{k:'rest',l:'المطعم',t:'text'}];
+const LOGS={
+ water:{title:'جدول مراقبة تحاليل المياه الصالحة للشرب',tag:'سجل',desc:'لكل خزان: قارورات ماء جافيل، الطبيب المشرف، التحليل البكتيريولوجي ونسبة الكلور.',sign:'',f:[
+  {k:'d',l:'تاريخ اليوم',t:'date',def:()=>today()},
+  {k:'tank',l:'خزان الماء',t:'select',o:['المجمع المائي رقم 1','المجمع المائي رقم 2','خزان المطعم المركزي']},
+  {k:'b1',l:'قارورات ماء جافيل · المرة الأولى',t:'number'},
+  {k:'b2',l:'قارورات ماء جافيل · المرة الثانية',t:'number'},
+  {k:'doc',l:'الطبيب المشرف',t:'text',keep:1},
+  {k:'bact',l:'تحليل بكتيريولوجي',t:'text'},
+  {k:'cl',l:'نسبة الكلور',t:'select',o:['كافية','غير كافية'],bad:'غير كافية'},
+  {k:'note',l:'نتائج / ملاحظات',t:'text',w:1}]},
+ pest:{title:'بطاقة تدخلات مؤدي التنظيف وإبادة الفئران والتطهير',tag:'سجل',desc:'لتوثيق تدخلات الشركات أو الأشخاص المتخصصين في التنظيف ومكافحة الآفات.',sign:'توقيع وختم مؤدي خدمة التنظيف',f:[
+  {k:'dt',l:'التاريخ/الساعة',t:'datetime-local',def:()=>localISO(new Date())},
+  {k:'type',l:'نوع التدخل',t:'select',o:['تنظيف','تطهير','إبادة الفئران','مكافحة الحشرات','أخرى']},
+  {k:'zone',l:'المنطقة التي شملها التدخل',t:'text'},
+  {k:'mat',l:'المواد المستخدمة',t:'text'},
+  {k:'appr',l:'وضعية المواد',t:'select',o:['معتمدة','مرخصة','غير محددة'],bad:'غير محددة'},
+  {k:'note',l:'الملاحظة',t:'text',w:1}]},
+ hood:{title:'بطاقة صيانة أجهزة الشفط واستخراج الأبخرة',tag:'سجل',desc:'العملية المنجزة ونتيجتها واسم المتدخل. التنظيف والفحص في كل عطلة جامعية والصيانة قبل كل دخول جامعي.',sign:'توقيع وختم المسؤول',f:[
+  {k:'dt',l:'التاريخ/الساعة',t:'datetime-local',def:()=>localISO(new Date())},
+  {k:'op',l:'العملية المنجزة',t:'select',o:['تنظيف مراوح التهوية','فحص مخارج البخار','صيانة فنية لأنظمة التهوية والشفط','تنظيف الشفاطات','أخرى']},
+  {k:'res',l:'النتيجة',t:'select',o:['مطابق','يحتاج متابعة','غير مطابق'],bad:'غير مطابق'},
+  {k:'name',l:'اسم المتدخل',t:'text',keep:1},
+  {k:'note',l:'ملاحظات',t:'text',w:1}]},
+ prod:{title:'بطاقة مواد الصيانة والتنظيف المستعملة',tag:'سجل',desc:'وفقاً لمخطط التنظيف والتطهير: المادة، مواصفاتها، الكمية وتوقيت الاستعمال.',sign:'توقيع وختم المسؤول',f:[
+  {k:'d',l:'التاريخ',t:'date',def:()=>today()},
+  {k:'tm',l:'التوقيت',t:'time',def:()=>localISO(new Date()).slice(11)},
+  {k:'prod',l:'مادة التنظيف/التطهير',t:'select',o:['منظف (لإزالة الأوساخ والدهون)','معقم (للقضاء على الميكروبات)','مطهر متخصص (للأسطح التي تلامس الغذاء)','أخرى']},
+  {k:'spec',l:'المواصفات (الاسم التجاري، الاعتماد...)',t:'text'},
+  {k:'qty',l:'الكمية',t:'text'}]}
+};
+const fv=(f,v)=>v===undefined||v===''?'—':(f.t==='datetime-local'?new Date(v).toLocaleString('ar-DZ',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):v);
+function logInput(f,val,pre){const id=pre+f.k;const st=f.w?' style="grid-column:1/-1"':'';
+  if(f.t==='select')return `<label class="f" for="${id}"${st}>${f.l}<select class="inp" id="${id}">${f.o.map(o=>`<option${o===val?' selected':''}>${o}</option>`).join('')}</select></label>`;
+  return `<label class="f" for="${id}"${st}>${f.l}<input class="inp${['number','date','time','datetime-local'].includes(f.t)?' num':''}" id="${id}" type="${f.t}" value="${esc(val||'')}"${f.t==='number'?' inputmode="numeric" min="0"':''}></label>`}
+function renderLog(k){
+  const c=LOGS[k];const L=store.get('log_'+k,[]);const H=store.get('hdr',{});const keep=store.get('keep_'+k,{});
+  return `<a class="btn small" href="#forms">→ كل البطاقات</a>
+  <div class="card stack" style="margin-top:12px"><div><div class="eyebrow">${c.tag}</div><h2 style="font-size:19px;margin-top:2px">${c.title}</h2><p class="muted" style="margin:4px 0 0;font-size:14px">${c.desc}</p></div>
+   <div class="grid2">${HEADER_F.map(f=>logInput(f,H[f.k],'h_')).join('')}</div></div>
+  <div class="card stack" style="margin-top:12px"><div class="eyebrow">إضافة سطر</div>
+   <div class="grid2">${c.f.map(f=>logInput(f,f.def?f.def():f.keep?keep[f.k]:'','l_')).join('')}</div>
+   <div class="row"><button class="btn primary" id="lgSave">تسجيل</button><button class="btn small" id="lgCopy">نسخ البطاقة</button><span class="pill info num">${L.length} سطر</span></div>
+   <textarea class="inp copybox" id="lgBox" readonly aria-label="نص البطاقة"></textarea></div>
+  <div class="entries">${L.length?L.map((e,i)=>({e,i})).reverse().map(({e,i})=>{const bad=c.f.filter(f=>f.bad&&e[f.k]===f.bad);return `<div class="entry"><span style="flex:1;min-width:200px"><b>${esc(fv(c.f[0],e[c.f[0].k]))} · ${esc(fv(c.f[1],e[c.f[1].k]))}</b><br><span class="muted" style="font-size:13px">${c.f.slice(2).filter(f=>e[f.k]).map(f=>f.l+': '+esc(e[f.k])).join(' · ')||'—'}</span></span>${bad.length?`<span class="pill bad">${bad.map(f=>e[f.k]).join('، ')}</span>`:''}<button class="btn small" data-del="${i}" aria-label="حذف السطر">حذف</button></div>`}).join(''):'<p class="muted" style="margin:0">لا توجد أسطر مسجلة بعد.</p>'}</div>`;
+}
+function bindLog(k){
+  const c=LOGS[k];
+  HEADER_F.forEach(f=>document.getElementById('h_'+f.k).addEventListener('input',e=>{const H=store.get('hdr',{});H[f.k]=e.target.value;store.set('hdr',H)}));
+  $('#lgSave').addEventListener('click',()=>{const e={};c.f.forEach(f=>e[f.k]=document.getElementById('l_'+f.k).value.trim());
+    const filled=c.f.filter(f=>f.t!=='select'&&!f.def&&e[f.k]).length;if(!filled){toast('املأ خانة واحدة على الأقل');return}
+    const keep={};c.f.filter(f=>f.keep).forEach(f=>keep[f.k]=e[f.k]);store.set('keep_'+k,keep);
+    const L=store.get('log_'+k,[]);L.push(e);store.set('log_'+k,L.slice(-200));toast('تم التسجيل');const y=scrollY;renderForm('log-'+k);scrollTo(0,y)});
+  document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{const L=store.get('log_'+k,[]);L.splice(+b.dataset.del,1);store.set('log_'+k,L);const y=scrollY;renderForm('log-'+k);scrollTo(0,y)}));
+  $('#lgCopy').addEventListener('click',()=>{const H=store.get('hdr',{});const L=store.get('log_'+k,[]);
+    copyText(`${c.title}\nمديرية الخدمات الجامعية: ${H.dir||'—'}\nالمطعم: ${H.rest||'—'}\n\n`+(L.length?L.map((e,i)=>`${i+1}. `+c.f.map(f=>f.l+': '+fv(f,e[f.k])).join(' | ')).join('\n'):'لا توجد أسطر')+(c.sign?`\n\n${c.sign}:`:''),'lgBox')});
+}
+$('#logCards').innerHTML=Object.entries(LOGS).map(([k,c])=>`<div class="form-item"><span class="pill info">${c.tag}</span><h3>${c.title}</h3><p>${c.desc}</p><div class="row"><a class="btn small primary" href="#form-log-${k}">افتح البطاقة</a></div></div>`).join('');
+
+/* ---------- comprehensive card ---------- */
+const FULL=[
+ {t:'أ. الحالة العامة للهياكل',it:[{ty:'grid',k:'a',rows:['الإنارة','التهوية','الطلاء','النوافذ','الجدران','الأبواب','الأرضية','أخرى تحدد'],cols:['المطابخ','المطاعم','النادي']}]},
+ {t:'ب. المطابخ',it:[{ty:'h',l:'غسل الأواني'},{ty:'rate',k:'b1',l:'يدوي'},{ty:'rate',k:'b2',l:'خاص (بوسائل خاصة)'},{ty:'rate',k:'b3',l:'حالة العتاد'},{ty:'h',l:'الأفران وشفاطات الدخان'},{ty:'rate',k:'b4',l:'النظافة والصيانة'}]},
+ {t:'ج. غرف التبريد والمخزن',it:[{ty:'h',l:'1. الترموستات'},{ty:'choice',k:'c1',l:'الترموستات',o:['موجود','غير موجود'],bad:'غير موجود'},{ty:'choice',k:'c2',l:'حالته',o:['يعمل','لا يعمل'],bad:'لا يعمل'},{ty:'h',l:'2. شروط تخزين المواد الغذائية'},{ty:'num',k:'c3',l:'عدد الغرف'},{ty:'num',k:'c4',l:'عدد الغرف الصالحة'},{ty:'rate',k:'c5',l:'النظافة والصيانة'},{ty:'rate',k:'c6',l:'شروط التخزين'},{ty:'rate',k:'c7',l:'فصل المواد'},{ty:'h',l:'المخزن'},{ty:'choice',k:'c8',l:'وجود رفوف',o:['نعم','لا'],bad:'لا'},{ty:'rate',k:'c9',l:'النظافة والصيانة'}]},
+ {t:'د. النادي',it:[{ty:'h',l:'حالة العتاد'},{ty:'rate',k:'d1',l:'آلة القهوة'},{ty:'rate',k:'d2',l:'ثلاجة الحلويات'},{ty:'rate',k:'d3',l:'أخرى تحدد'}]},
+ {t:'هـ. الإيواء',it:[{ty:'h',l:'1. الشروط العامة للإيواء'},{ty:'num',k:'e1',l:'عدد الطلبة'},{ty:'num',k:'e2',l:'عدد الأجنحة'},{ty:'num',k:'e3',l:'عدد الغرف في كل جناح'},{ty:'num',k:'e4',l:'عدد الطلبة في كل غرفة'},{ty:'h',l:'2. الغرف'},{ty:'rate',k:'e5',l:'الإنارة'},{ty:'rate',k:'e6',l:'النظافة العامة'},{ty:'rate',k:'e7',l:'التدفئة'},{ty:'rate',k:'e8',l:'حالة الأفرشة'},{ty:'h',l:'3. دورات المياه والحمامات'},{ty:'num',k:'e9',l:'عدد المراحيض'},{ty:'num',k:'e10',l:'عدد الحمامات'},{ty:'num',k:'e11',l:'عدد الحمامات الصالحة للاستعمال'},{ty:'choice',k:'e12',l:'وجود ماء ساخن',o:['نعم','لا'],bad:'لا'}]},
+ {t:'و. نظافة المحيط والتطهير',it:[{ty:'h',l:'1. المياه الصالحة للشرب'},{ty:'multi',k:'f1',l:'المصدر',o:['شبكة','خزان','بئر']},{ty:'h',l:'2. طرق المعالجة'},{ty:'choice',k:'f2',l:'تطهير آلي بالكلور',o:['نعم','لا']},{ty:'choice',k:'f3',l:'تطهير يدوي',o:['نعم','لا']},{ty:'choice',k:'f4',l:'الطوب المسامي',o:['نعم','لا']},{ty:'text',k:'f5',l:'أخرى تحدد'},{ty:'h',l:'3. طبيعة ونتائج المراقبة'},{ty:'date',k:'f6',l:'تاريخ اختبار الكلور'},{ty:'text',k:'f7',l:'النتيجة (الكلور)'},{ty:'date',k:'f8',l:'الكوليمتري (التاريخ)'},{ty:'text',k:'f9',l:'النتيجة (الكوليمتري)'},{ty:'h',l:'4. حالة شبكة التطهير'},{ty:'rate',k:'f10',l:'شبكة التطهير'},{ty:'h',l:'5. النفايات المنزلية'},{ty:'choice',k:'f11',l:'وجود مكان تجميع',o:['نعم','لا'],bad:'لا'},{ty:'choice',k:'f12',l:'وجود مفرغة',o:['نعم','لا']},{ty:'num',k:'f13',l:'وتيرة الجمع (يوم بها)'},{ty:'h',l:'6. الحيوانات الناقلة للأمراض'},{ty:'choice',k:'f14',l:'كلاب ضالة',o:['نعم','لا'],bad:'نعم'},{ty:'choice',k:'f15',l:'قطط ضالة',o:['نعم','لا'],bad:'نعم'},{ty:'choice',k:'f16',l:'فئران',o:['نعم','لا'],bad:'نعم'},{ty:'choice',k:'f17',l:'بعوض',o:['نعم','لا'],bad:'نعم'},{ty:'h',l:'7. حملات مكافحة الحيوانات الضالة والناقلة للأمراض'},{ty:'tbl',k:'f18',rows:['كلاب','قطط','فئران','بعوض','أخرى'],cols:['ملاحظات','طبيعة التدخل','التواريخ']}]}];
+function fullState(){return store.get('full',{v:{},site:'',date:today(),notes:'',doc:''})}
+function fullStats(s){let rated=0,pts=0,total=0;const bad=[];
+  FULL.forEach(sec=>sec.it.forEach(it=>{
+   if(it.ty==='rate'){total++;const v=s.v[it.k];if(v!==undefined){rated++;pts+=v;if(v===0)bad.push(sec.t.slice(3)+' · '+it.l)}}
+   if(it.ty==='grid')it.rows.forEach((r,ri)=>it.cols.forEach((c,ci)=>{total++;const v=s.v[`${it.k}_${ri}_${ci}`];if(v!==undefined){rated++;pts+=v;if(v===0)bad.push(c+' · '+r)}}));
+   if(it.ty==='choice'&&it.bad&&s.v[it.k]===it.bad)bad.push(sec.t.slice(3)+' · '+it.l+': '+it.bad);
+  }));return {rated,pts,total,bad,pct:rated?Math.round(pts/(rated*2)*100):0}}
+const seg=(k,val)=>`<span class="seg" role="group">${[0,1,2].map(v=>`<button data-fk="${k}" data-v="${v}" aria-pressed="${val===v}">${RL[v]}</button>`).join('')}</span>`;
+function fullItem(it,s){
+  const v=s.v[it.k];
+  switch(it.ty){
+   case 'h':return `<h4 style="font-size:14.5px;margin:12px 0 2px;color:var(--brand)">${it.l}</h4>`;
+   case 'rate':return `<div class="rate-row"><span class="lbl">${it.l}</span>${seg(it.k,v)}</div>`;
+   case 'choice':return `<div class="rate-row"><span class="lbl">${it.l}</span><span class="seg" role="group">${it.o.map(o=>`<button data-fc="${it.k}" data-o="${o}" aria-pressed="${v===o}" data-v="${it.bad?(o===it.bad?0:2):2}">${o}</button>`).join('')}</span></div>`;
+   case 'multi':return `<div class="rate-row"><span class="lbl">${it.l}</span><span class="seg" role="group">${it.o.map(o=>`<button data-fm="${it.k}" data-o="${o}" aria-pressed="${(v||[]).includes(o)}" data-v="2">${o}</button>`).join('')}</span></div>`;
+   case 'num':case 'text':case 'date':return `<div class="rate-row"><label class="lbl" for="fi_${it.k}">${it.l}</label><input class="inp${it.ty!=='text'?' num':''}" style="max-width:${it.ty==='text'?'100%':'170px'};flex:${it.ty==='text'?1:'none'}" id="fi_${it.k}" data-ft="${it.k}" type="${it.ty==='num'?'number':it.ty}" value="${esc(v||'')}"${it.ty==='num'?' min="0" inputmode="numeric"':''}></div>`;
+   case 'grid':return `<div class="tbl-wrap"><table style="min-width:620px"><thead><tr><th rowspan="2">الحالة</th>${it.cols.map(c=>`<th style="text-align:center">${c}</th>`).join('')}</tr></thead><tbody>${it.rows.map((r,ri)=>`<tr><th scope="row" style="background:none;white-space:nowrap">${r}</th>${it.cols.map((c,ci)=>`<td style="text-align:center">${seg(`${it.k}_${ri}_${ci}`,s.v[`${it.k}_${ri}_${ci}`])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+   case 'tbl':return `<div class="tbl-wrap"><table style="min-width:560px"><thead><tr><th>الحيوانات</th>${it.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${it.rows.map((r,ri)=>`<tr><th scope="row" style="background:none">${r}</th>${it.cols.map((c,ci)=>`<td><input class="inp" style="min-height:36px;padding:6px 8px" aria-label="${r} · ${c}" data-ft="${it.k}_${ri}_${ci}" value="${esc(s.v[`${it.k}_${ri}_${ci}`]||'')}"></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }return '';
+}
+function renderFull(){
+  const s=fullState();const st=fullStats(s);
+  return `<a class="btn small" href="#forms">→ كل البطاقات</a>
+  <div class="card" style="margin-top:12px"><div class="eyebrow">البطاقة التقنية الشاملة</div><h2 style="font-size:19px;margin:2px 0 10px">مراقبة النظافة والصحة في الوسط الجامعي</h2>
+   <div class="grid2"><label class="f" for="fuSite">الإقامة / المطعم<input class="inp" id="fuSite" value="${esc(s.site)}"></label><label class="f" for="fuDate">تاريخ المراقبة<input class="inp num" id="fuDate" type="date" value="${esc(s.date)}"></label></div></div>
+  <div class="card score" style="margin-top:12px">${ring(st.pct)}<div><b style="font-size:16px">${st.rated} من ${st.total} بنداً مقيَّماً</b><div class="muted" style="font-size:14px">${st.bad.length?`<span class="pill bad">${st.bad.length} نقطة تحتاج إجراءً</span>`:'لا توجد نقاط سلبية حتى الآن'}</div></div></div>
+  ${FULL.map(sec=>`<div class="card rate-sec" style="margin-top:12px"><h3>${sec.t}</h3>${sec.it.map(it=>fullItem(it,s)).join('')}</div>`).join('')}
+  <div class="card stack" style="margin-top:12px">${st.bad.length?`<div class="note" style="margin:0"><b>نقاط تحتاج إجراءً تصحيحياً:</b><ul style="margin:6px 0 0;padding-inline-start:18px">${st.bad.map(b=>`<li>${b}</li>`).join('')}</ul></div>`:''}
+   <label class="f" for="fuNotes">ملاحظات وتوصيات<textarea class="inp" id="fuNotes" rows="4">${esc(s.notes)}</textarea></label>
+   <label class="f" for="fuDoc">اسم طبيب وحدة الطب الوقائي<input class="inp" id="fuDoc" value="${esc(s.doc)}"></label>
+   <div class="row"><button class="btn primary" id="fuCopy">نسخ التقرير</button><button class="btn" id="fuReset">بطاقة جديدة</button></div>
+   <textarea class="inp copybox" id="fuBox" readonly aria-label="نص التقرير"></textarea></div>`;
+}
+function fullReport(){
+  const s=fullState();const st=fullStats(s);const v=s.v;
+  let t=`البطاقة التقنية الشاملة لمراقبة النظافة والصحة في الوسط الجامعي\nالإقامة/المطعم: ${s.site||'—'}\nالتاريخ: ${s.date}\n`;
+  FULL.forEach(sec=>{t+=`\n${sec.t}\n`;sec.it.forEach(it=>{
+   if(it.ty==='h')t+=`  ${it.l}\n`;
+   else if(it.ty==='rate')t+=`- ${it.l}: ${v[it.k]===undefined?'—':RL[v[it.k]]}\n`;
+   else if(it.ty==='multi')t+=`- ${it.l}: ${(v[it.k]||[]).join('، ')||'—'}\n`;
+   else if(['choice','num','text','date'].includes(it.ty))t+=`- ${it.l}: ${v[it.k]||'—'}\n`;
+   else if(it.ty==='grid')it.rows.forEach((r,ri)=>t+=`- ${r}: `+it.cols.map((c,ci)=>{const x=v[`${it.k}_${ri}_${ci}`];return c+' '+(x===undefined?'—':RL[x])}).join(' | ')+'\n');
+   else if(it.ty==='tbl')it.rows.forEach((r,ri)=>{const cells=it.cols.map((c,ci)=>v[`${it.k}_${ri}_${ci}`]);if(cells.some(Boolean))t+=`- ${r}: `+it.cols.map((c,ci)=>c+': '+(cells[ci]||'—')).join(' | ')+'\n'});
+  })});
+  t+=`\nنسبة المطابقة: ${st.pct}% (${st.rated} بنداً مقيَّماً)\n`;if(st.bad.length)t+=`نقاط تحتاج إجراءً تصحيحياً:\n${st.bad.map(b=>'• '+b).join('\n')}\n`;
+  t+=`\nملاحظات وتوصيات: ${s.notes||'—'}\nاسم وتوقيع طبيب وحدة الطب الوقائي: ${s.doc||'—'}`;return t;
+}
+function bindFull(){
+  const box=$('#formView');const save=f=>{const s=fullState();f(s);store.set('full',s)};const re=()=>{const y=scrollY;renderForm('full');scrollTo(0,y)};
+  box.querySelectorAll('[data-fk]').forEach(b=>b.addEventListener('click',()=>{save(s=>{const v=+b.dataset.v,k=b.dataset.fk;if(s.v[k]===v)delete s.v[k];else s.v[k]=v});re()}));
+  box.querySelectorAll('[data-fc]').forEach(b=>b.addEventListener('click',()=>{save(s=>{const k=b.dataset.fc;if(s.v[k]===b.dataset.o)delete s.v[k];else s.v[k]=b.dataset.o});re()}));
+  box.querySelectorAll('[data-fm]').forEach(b=>b.addEventListener('click',()=>{save(s=>{const k=b.dataset.fm;const a=s.v[k]||[];s.v[k]=a.includes(b.dataset.o)?a.filter(x=>x!==b.dataset.o):[...a,b.dataset.o]});re()}));
+  box.querySelectorAll('[data-ft]').forEach(e=>e.addEventListener('input',()=>save(s=>s.v[e.dataset.ft]=e.value)));
+  [['fuSite','site'],['fuDate','date'],['fuNotes','notes'],['fuDoc','doc']].forEach(([id,k])=>document.getElementById(id).addEventListener('input',e=>save(s=>s[k]=e.target.value)));
+  $('#fuCopy').addEventListener('click',()=>copyText(fullReport(),'fuBox'));
+  $('#fuReset').addEventListener('click',()=>{store.set('full',null);renderForm('full');toast('بطاقة جديدة')});
+}
+
+function renderForm(k){
+  const home=$('#formsHome'),fv=$('#formView');
+  const R={inspect:[renderInspect,bindInspect],fridge:[renderFridge,bindFridge],oil:[renderOil,bindOil],witness:[renderWitness,bindWitness],full:[renderFull,bindFull]};
+  Object.keys(LOGS).forEach(x=>R['log-'+x]=[()=>renderLog(x),()=>bindLog(x)]);
+  if(!k||!R[k]){home.style.display='';fv.innerHTML='';return}
+  home.style.display='none';fv.innerHTML=R[k][0]();R[k][1]();
+}
+
+/* ---------- quiz ---------- */
+const QZ=[
+ ['ما أدنى درجة حرارة يجب أن يبلغها قلب الدواجن عند الطهي؟',['+63°','+70°','+74°','+80°'],2,'الجدول (4-2): الدواجن والأطباق المركبة المسخنة +74° كحد أدنى.'],
+ ['كم يجب أن تزن عينة الطبق الشاهد؟',['100 غ','150 غ','200 غ','250 غ'],1,'الطبق الشاهد عينة من كل وجبة مطهوة بوزن 150 غرام.'],
+ ['ما مدة الاحتفاظ بالطبق الشاهد؟',['24 ساعة','48 ساعة','72 ساعة','5 أيام'],3,'تُحفظ العينة 5 أيام من تاريخ أخذها (120 ساعة).'],
+ ['أي لون مخصص لطاولة تقطيع الأسماك؟',['أحمر','أصفر','أخضر','أزرق'],3,'الجدول (4-1): أحمر للحوم الحمراء، أصفر للدواجن، أخضر للخضروات، أزرق للأسماك.'],
+ ['كيف تتم إذابة الدواجن المجمدة الموجهة للاستهلاك؟',['في درجة حرارة الغرفة','بين 0° و+4° دون تجاوز 24 ساعة','في ماء ساخن','بين +5° و+10° خلال 48 ساعة'],1,'تُذاب بين 0° و+4° دون تجاوز 24 سا من بداية إزالة التجميد، ويُمنع إعادة تجميدها.'],
+ ['ما قاعدة التبريد السريع في الرابطة الباردة؟',['إلى +4° خلال 6 ساعات','إلى +10° خلال ساعتين','إلى 0° خلال ساعة','إلى +15° خلال 3 ساعات'],1,'التبريد السريع من نهاية الطهي إلى +10° خلال ساعتين، ثم التخزين بين 0° و+4°.'],
+ ['متى يصبح التصريح بالتسمم الغذائي إجبارياً؟',['عند حالة واحدة','عند حالتين على الأقل تناولتا نفس الوجبة في نفس المكان والزمان','عند 5 حالات','بعد تأكيد المخبر فقط'],1,'اكتشاف حالتين (02) على الأقل مع تناول نفس الوجبة في نفس المكان والزمان.'],
+ ['على أي بعد يجب أن تكون نقطة تجميع النفايات خارج المطعم؟',['10 أمتار','20 متراً','40 متراً','100 متر'],2,'نقطة تجميع النفايات على بعد 40 متر خارج المطعم.'],
+ ['كم مرة تُنظَّف الأرضيات يومياً حسب البرنامج؟',['مرة واحدة','مرتين','ثلاث مرات','أربع مرات'],2,'الأرضيات: ثلاث (3) مرات في اليوم (كنس + غسل + تطهير). المرافق الصحية أربع مرات.'],
+ ['ما درجة حرارة المنتجات المبردة المقبولة عند الاستقبال؟',['بين 0° و+4°','بين +4° و+8°','أقل من −18°','حتى +10°'],0,'معايير الاستقبال: بين 0° و+4°م.'],
+ ['كم مرة في العام تُجرى تحاليل البراز لعمال المطعم؟',['مرة واحدة','مرتين (كل 6 أشهر)','أربع مرات','عند التوظيف فقط'],1,'تحاليل البراز إجبارية لكل عمال المطعم مرتين في العام (كل 06 أشهر).'],
+ ['ما الحد الأدنى لحرارة الحفظ الساخن للأغذية الجاهزة؟',['+50°','+55°','+63°','+74°'],2,'الرابطة الساخنة: الحفظ في درجة حرارة ≥ +63° والاستهلاك في نفس اليوم.'],
+ ['كم مرة يُسمح بإعادة تسخين الأغذية؟',['ولا مرة','مرة واحدة كحد أقصى','مرتين','حسب الحاجة'],1,'عدم إعادة تسخين الأغذية أكثر من مرة واحدة.'],
+ ['ما وتيرة تقارير طبيب الإقامة عن هياكل الإطعام؟',['تقرير شهري','تقرير واحد على الأقل في الأسبوع','تقرير كل فصل','تقرير سنوي'],1,'تقرير واحد على الأقل في الأسبوع وكلما استدعى الأمر.'],
+ ['متى تُجرى الصيانة الفنية لجميع أنظمة التهوية والشفط؟',['يومياً','أسبوعياً','قبل كل دخول جامعي','كل 5 سنوات'],2,'الصيانة الفنية لأنظمة التهوية والشفط قبل كل دخول جامعي.']];
+let qi=0,qs=[];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let QORD=shuffle([...Array(QZ.length).keys()]).slice(0,10);
+function renderQuiz(){
+  const box=$('#quizBox');const dots=`<div class="q-dots" aria-hidden="true">${QORD.map((_,i)=>`<i class="${qs[i]===true?'r':qs[i]===false?'w':i===qi?'c':''}"></i>`).join('')}</div>`;
+  if(qi>=QORD.length){const sc=qs.filter(Boolean).length;const best=store.get('qbest',0);if(sc>best)store.set('qbest',sc);
+    box.innerHTML=`${dots}<div class="score" style="margin-top:16px">${ring(Math.round(sc/QORD.length*100))}<div><h3 style="font-size:20px">${sc} من ${QORD.length}</h3><p class="muted" style="margin:4px 0 0">${sc===QORD.length?'ممتاز، إلمام كامل بالدليل.':sc>=7?'جيد. راجع الأسئلة التي أخطأت فيها.':'راجع فصول الدليل ثم أعد المحاولة.'} أفضل نتيجة: ${Math.max(sc,best)}/${QORD.length}</p></div></div><div class="row" style="margin-top:16px"><button class="btn primary" id="qAgain">اختبار جديد</button><a class="btn" href="#guide">مراجعة الدليل</a></div>`;
+    $('#qAgain').addEventListener('click',()=>{qi=0;qs=[];QORD=shuffle([...Array(QZ.length).keys()]).slice(0,10);renderQuiz()});return}
+  const q=QZ[QORD[qi]];
+  box.innerHTML=`${dots}<div class="eyebrow num" style="margin-top:12px">السؤال ${qi+1} من ${QORD.length}</div><h3 style="font-size:18px;margin-top:4px">${q[0]}</h3><div class="q-opts">${q[1].map((o,i)=>`<button class="q-opt" data-i="${i}">${o}</button>`).join('')}</div><div id="qFb"></div>`;
+  box.querySelectorAll('.q-opt').forEach(b=>b.addEventListener('click',()=>{
+    const ok=+b.dataset.i===q[2];qs[qi]=ok;
+    box.querySelectorAll('.q-opt').forEach(x=>{x.disabled=true;if(+x.dataset.i===q[2])x.classList.add('right')});if(!ok)b.classList.add('wrong');
+    $('#qFb').innerHTML=`<div class="verdict ${ok?'ok':'bad'}">${ico(ok?'check':'alert',22)}<div>${ok?'إجابة صحيحة':'إجابة خاطئة'}<small>${q[3]}</small></div></div><div class="row" style="margin-top:12px"><button class="btn primary" id="qNext">${qi+1<QORD.length?'السؤال التالي':'عرض النتيجة'}</button></div>`;
+    $('#qNext').addEventListener('click',()=>{qi++;renderQuiz()});$('#qNext').focus();
+  }));
+}
+renderQuiz();
+
+route();
+</script>
+</body>
+</html>
